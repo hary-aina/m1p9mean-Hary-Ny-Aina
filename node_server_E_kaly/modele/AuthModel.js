@@ -2,10 +2,10 @@
 
 module.exports = class AuthModel{
 
-    //User connection
-    static loginForAnyOne(db, req){
+     //User connection
+     static loginForAnyOne(db, req){
         return new Promise((resolve, reject)=> {
-            db.collection("user").findOne(
+            db.collection("user").find(
                 {
                     email: req.body.email,
                     password: req.body.password
