@@ -4,19 +4,6 @@ const app = express();
 // [!] : Pour le local de l'application en http
 //const http = require('http').Server(app);
 
-// [!] : Pour la production de l'application en https
-// const fs = require('fs');
-// const options = {
-//   key: fs.readFileSync('ssl.pvk'),
-//   cert: fs.readFileSync('ssl.crt'),
-//   ca: [
-//           fs.readFileSync('ca_bundle.crt')
-
-//        ]
-// };
-//const https = require('https').createServer(options, app);
-
-
 let bodyParser = require('body-parser');
 
 // [!] : middleware pour la structuration des requetes particuliers (ex : POST)
@@ -136,7 +123,3 @@ app.listen(port, function(){
 // 	console.log(`Listening on ${ addr }:${ port }`);
 // });
 
-//[!] : demarrage du serveur en https
-// https.listen(port, function(){
-// 	console.log(`Listening on ${ addr }:${ port }`);
-// });
