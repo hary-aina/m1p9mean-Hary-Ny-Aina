@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const config = require("./tools/project.config");
+//import DB_URL from "./tools/project.config.json"
 
 // [!] : Pour le local de l'application en http
 //const http = require('http').Server(app);
