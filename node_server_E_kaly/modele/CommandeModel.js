@@ -55,7 +55,8 @@ module.exports = class CommadeModel{
         return new Promise((resolve, reject)=> {
             db.collection("commande").find(
                 {
-                    livreur_id : ObjectId(livreur_id)
+                    livreur_id : ObjectId(livreur_id),
+                    etat : 20
                 }
             )
             .skip(skips).limit(limit).toArray(function (err, result) {
