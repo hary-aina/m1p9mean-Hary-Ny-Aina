@@ -23,6 +23,6 @@ export class AuthentificationService {
             'Content-Type': 'application/json'
         })
     })
-}
+  }
 
 }

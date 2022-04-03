@@ -16,12 +16,14 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
