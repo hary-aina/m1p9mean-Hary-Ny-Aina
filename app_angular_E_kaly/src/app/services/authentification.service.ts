@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { baseUrl, tokenApp } from 'src/environments/environment';
 
 export class Personne {
@@ -17,11 +17,11 @@ export class AuthentificationService {
         "email": email,
         "password": pwd
     }
-    return this.http.post(`${baseUrl}/session/login`, postData, {
-        headers: {
+    return this.http.post(`${baseUrl}/auth/login`, postData, {
+        headers: new HttpHeaders({
             "Accept": 'application/json',
             'Content-Type': 'application/json'
-        }
+        })
     })
 }
 

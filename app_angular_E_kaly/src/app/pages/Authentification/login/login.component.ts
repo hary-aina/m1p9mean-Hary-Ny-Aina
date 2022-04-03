@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private authentificationService : AuthentificationService
   ) { 
-    this.email = "";
-    this.password = "";
+    this.email = "client@gmail.com";
+    this.password = "1234";
   }
 
   ngOnInit(): void {
-
+    this.login();
   }
 
   login(){
