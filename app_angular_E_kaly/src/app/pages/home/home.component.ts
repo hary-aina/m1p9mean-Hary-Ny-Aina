@@ -27,8 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPlat(){
-    let token = this.cookie.get('token');
-    let result = this.clientService.getPlat(this.per_page, this.page_number, token);
+    let result = this.clientService.getPlat(this.per_page, this.page_number);
       result.subscribe((data:any) => {
         //console.log(data);
         if(data.status != 200){

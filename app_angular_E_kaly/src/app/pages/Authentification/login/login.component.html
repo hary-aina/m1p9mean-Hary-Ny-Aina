@@ -1,7 +1,14 @@
-<div fxLayoutAlign="center center" fxFlexFill>
-    <mat-card fxFlex="25">
+<div style="background-image: url('../../../../assets/image/login.gif');" fxLayoutAlign="center center" fxFlexFill>
+    <div style=" border-right: 3px solid; color: white;" fxLayoutAlign="center center" fxFlex="15">
+        <h1 style="font-size: 60px;"><mat-icon>fastfood</mat-icon>E-Kaly</h1>
+    </div>
+    <div fxFlex="1">
+        
+    </div>
+    <mat-card fxFlex="30">
         <p style="color: red;">{{error.error}}</p>
         <form fxLayoutAlign="stretch" fxLayout="column">
+            <h1 style="text-align: center;">Connexion</h1>
             <mat-form-field >
                 <input matInput placeholder="email" name="email" [(ngModel)]="email">
             </mat-form-field>
@@ -11,7 +18,7 @@
                 <input matInput placeholder="password" type="password"  name="password" [(ngModel)]="password">
             </mat-form-field>
             <p style="color: red;">{{error.pwd}}</p>
-            <button mat-button type="button" (click)="login()">Login</button>
+            <button color="primary" mat-button type="button" (click)="login()">Login</button>
         </form>        
     </mat-card>  
 </div>

@@ -9,8 +9,8 @@ export class ClientService {
 
   constructor(private http : HttpClient) { }
 
-  getPlat(per_page:Number, page_number:Number, token:String) {
-    return this.http.get(`${baseUrl}/client/plat/listePlat/${per_page}/${page_number}?token=${token}`);
+  getPlat(per_page:Number, page_number:Number) {
+    return this.http.get(`${baseUrl}/client/plat/listePlat/${per_page}/${page_number}`);
   }
 
 }
