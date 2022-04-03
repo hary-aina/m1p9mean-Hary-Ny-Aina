@@ -3,7 +3,7 @@ const app = express();
 const config = require("./tools/project.config");
 
 // [!] : Pour le local de l'application en http
-//const http = require('http').Server(app);
+const http = require('http').Server(app);
 
 let bodyParser = require('body-parser');
 
@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // Supporte les bodies encod
 // [!] : middleware de Gestion du CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, append, delete, entries, foreach, get, has, keys, set, values");
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
@@ -48,11 +48,11 @@ const port = process.env.PORT || config.PORT;
 const addr = process.env.SERVER_ADDR || 'localhost';
 
 //[!] : demarrage du serveur simple
-app.listen(port, function(){
-	console.log(`Listening on ${ addr }:${ port }`);
-});
-
-//[!] : demarrage du serveur en http
-// http.listen(port, function(){
+// app.listen(port, function(){
 // 	console.log(`Listening on ${ addr }:${ port }`);
 // });
+
+//[!] : demarrage du serveur en http
+http.listen(port, function(){
+	console.log(`Listening on ${ addr }:${ port }`);
+});
