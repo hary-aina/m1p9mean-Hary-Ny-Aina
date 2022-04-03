@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { tokenApp } from 'src/environments/environment';
-import { AuthentificationService } from 'src/app/services/authentification.service'
+import { AuthentificationService } from 'src/app/services/authentification.service';
+import { CookieService } from 'ngx-cookie-service'; 
 
 @Component({
   selector: 'app-login',
@@ -21,14 +21,15 @@ export class LoginComponent implements OnInit {
   reaload = false;
 
   constructor(
-    private authentificationService : AuthentificationService
+    private authentificationService : AuthentificationService,
+    private cookie : CookieService
   ) { 
     this.email = "client@gmail.com";
     this.password = "1234";
   }
 
   ngOnInit(): void {
-    this.login();
+    
   }
 
   login(){
@@ -40,13 +41,16 @@ export class LoginComponent implements OnInit {
         } 
         else {
           let result = this.authentificationService.login(this.email, this.password);
-          result.subscribe(data => {
-            console.log(data);
-            // if(){
-            //   this.error.error = "erreur lors de l'authentification";
-            // }else{
-
-            // }
+          result.subscribe((data:any) => {
+            //console.log(data);
+            if(data.status != 200){
+              this.error.error = "erreur lors de l'authentification";
+            }else{
+              //use cookie there
+              console.log(data);
+              this.cookie.set('token', data.token);  
+              this.cookie.set('user', data.data[0]); 
+            }
           });
         }
   }

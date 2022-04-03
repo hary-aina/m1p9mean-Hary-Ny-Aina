@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { baseUrl, tokenApp } from 'src/environments/environment';
+import { baseUrl } from 'src/environments/environment';
 
 export class Personne {
 }
