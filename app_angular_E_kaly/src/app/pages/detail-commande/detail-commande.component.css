@@ -1,0 +1,23 @@
+.content{
+    padding: 16px;
+    width: 79%;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.card-content{
+    display: flex;
+    justify-content: space-between ;
+}
+
+.menu{
+    background-color: #1b1b1bd3;
+}
+
+.card{
+    width: 285px;
+}
+
+.button{
+    background-color: #4f992d;
+    color:white;
+}

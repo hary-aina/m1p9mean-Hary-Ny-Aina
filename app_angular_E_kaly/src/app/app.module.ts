@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { CommandeComponent } from './pages/commande/commande.component';
+import { DetailCommandeComponent } from './pages/detail-commande/detail-commande.component';
 
 //import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
 
@@ -33,7 +34,8 @@ import { CommandeComponent } from './pages/commande/commande.component';
     InscriptionComponent,
     HomeComponent,
     NavbarComponent,
-    CommandeComponent
+    CommandeComponent,
+    DetailCommandeComponent
   ],
   imports: [
     BrowserModule,
