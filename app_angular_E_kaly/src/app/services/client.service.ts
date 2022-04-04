@@ -13,4 +13,8 @@ export class ClientService {
     return this.http.get(`${baseUrl}/client/plat/listePlat/${per_page}/${page_number}`);
   }
 
+  getPlatByRestaurant(restaurant_id:string, per_page:Number, page_number:Number){
+    return this.http.get(`${baseUrl}/client/plat/voirPlat/${restaurant_id}/${per_page}/${page_number}`);
+  }
+
 }

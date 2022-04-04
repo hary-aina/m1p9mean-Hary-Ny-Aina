@@ -19,7 +19,7 @@
                         <h2>{{plat.prix}} Ar</h2>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button class="button" mat-button>Commander</button>
+                        <button class="button" (click)="makeOrder(plat)" mat-button>Commander</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

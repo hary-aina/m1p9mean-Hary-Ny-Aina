@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
   }
 
   makeOrder(plat:any){
-    
+    this.router.navigate(['/detail_commande'], {state:{action:'insert', plat:plat}});
   }
 
 }

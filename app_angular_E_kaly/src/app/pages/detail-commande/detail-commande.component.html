@@ -8,26 +8,26 @@
 
             <mat-card>
                 <div style="margin-left: 15px;">
-                    <p><b>Commande du 2022/02/30 - Jean de la Croix</b></p>
+                    <p><b>Commande du {{CommandeObject.date_comande}} - {{CommandeObject.client_name}}</b></p>
                     <br>
-                    <p>Restaurant patenaire: <b>Bozaka</b></p>
+                    <p>Restaurant patenaire: <b>{{CommandeObject.restaurant_name}}</b></p>
                     <br>
-                    <p>contact du client : <b>0324752689</b></p>
+                    <p>Contact du client : <b>{{CommandeObject.client_contact}}</b></p>
                     <br>
-                    <p>lieu ou adress de livraison : <b>isotry</b></p>
+                    <p>Lieu ou adress de livraison : <b>{{CommandeObject.lieu_adresse_livraison}}</b></p>
                     <br>
-                    <p>Total : <b>1200ar</b></p>
+                    <p>Total : <b>{{CommandeObject.prix_global}}</b></p>
                 </div>
             </mat-card>
             <br>
 
             <h2>Liste des plats commander</h2>
             
-            <div *ngFor="let plat of [1,2,3]">
+            <div *ngFor="let plat of CommandeObject.detail_commande">
                 <mat-card class="card-content" fxLayout="row">
-                    <span>Salade voataby</span>
-                    <span>prix unitaire : 200 ar</span>
-                    <span>nombre : 1</span>
+                    <span>{{plat.plat_name}}</span>
+                    <span>prix unitaire : {{plat.plat_prix}}</span>
+                    <span>nombre : {{plat.nombre}}</span>
                     <div class="card-content" >
                         <a mat-button title="diminuer"><mat-icon>remove</mat-icon></a>
                         <a mat-button title="augmenter"><mat-icon>add</mat-icon></a>
@@ -40,26 +40,26 @@
                 <button mat-button style="margin-left: 45%; background-color:#4f992d; color:white;">Términer</button>
             </mat-toolbar>
 
-            <h2>Autres plats du Restaurant</h2>
+            <h2>Les plats du Restaurant</h2>
 
             <div class="menu">
                 <mat-toolbar>Bozaka</mat-toolbar>
                 <div class="content">
                     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-                        <!-- <div style="height:500px" *ngIf="plats.length == 0">
+                        <div style="height:500px" *ngIf="PlatResto.length == 0">
                             <h1 style="color: white;">Aucun resulat !</h1>
-                        </div> -->
-                        <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let plat of [1,2,3]">
+                        </div>
+                        <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let plat of PlatResto">
                             <mat-card class="card">
                                 <mat-card-header>
-                                    <mat-card-title>plat.name</mat-card-title>
+                                    <mat-card-title>{{plat.name}}</mat-card-title>
                                 </mat-card-header>
                                 <img mat-card-image src="./../../../assets/image/login.gif">
                                 <mat-card-content>
-                                    <p>plat.description</p>
-                                    <p><span>Restaurant : </span>plat.restaurant_name</p>
-                                    <p><span>Categorie : </span> plat.categorie_name </p>
-                                    <h2>plat.prix Ar</h2>
+                                    <p>{{plat.description}}</p>
+                                    <p><span>Restaurant : </span>{{plat.restaurant_name}}</p>
+                                    <p><span>Categorie : </span> {{plat.categorie_name}} </p>
+                                    <h2>{{plat.prix}} Ar</h2>
                                 </mat-card-content>
                                 <mat-card-actions>
                                     <button class="button" mat-button>Ajouter à la commande</button>

@@ -51,7 +51,9 @@ export class LoginComponent implements OnInit {
           //use cookie there
           //console.log(data);
           this.cookie.set('token', data.token);  
-          this.cookie.set('user', data.data[0]);
+          this.cookie.set('user_id', data.data[0]._id);
+          this.cookie.set('user_name', data.data[0].name);
+          this.cookie.set('user_contact', data.data[0].contact);
           this.router.navigate(['/home']);
         }
       });
