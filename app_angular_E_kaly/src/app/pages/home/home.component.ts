@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   per_page = 10;
   page_number = 1;
-  plats = [];
+  plats : any = [];
 
   error = "";
 
@@ -29,12 +29,40 @@ export class HomeComponent implements OnInit {
   getPlat(){
     let result = this.clientService.getPlat(this.per_page, this.page_number);
       result.subscribe((data:any) => {
-        //console.log(data);
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
         }else{
           //use cookie there
-          this.plats = data;
+          this.plats = data.data;
+          console.log(this.plats);
+        }
+      });
+  }
+
+  next(){
+    this.page_number ++;
+    let result = this.clientService.getPlat(this.per_page, this.page_number);
+      result.subscribe((data:any) => {
+        if(data.status != 200){
+          this.error = "erreur lors du cosulation du serveur";
+        }else{
+          //use cookie there
+          this.plats = data.data;
+          console.log(this.plats);
+        }
+      });
+  }
+
+  previous(){
+    this.page_number --;
+    let result = this.clientService.getPlat(this.per_page, this.page_number);
+      result.subscribe((data:any) => {
+        if(data.status != 200){
+          this.error = "erreur lors du cosulation du serveur";
+        }else{
+          //use cookie there
+          this.plats = data.data;
+          console.log(this.plats);
         }
       });
   }

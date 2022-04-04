@@ -1,2 +1,33 @@
 <app-navbar></app-navbar>
-<p>Home page</p>
+<div class="backgreen">
+    <mat-toolbar>Home</mat-toolbar>
+    <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div style="height:500px" *ngIf="plats.length == 0">
+                <h1 style="color: white;">Aucun resulat !</h1>
+            </div>
+            <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let plat of plats">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{plat.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="./../../../assets/image/login.gif">
+                    <mat-card-content>
+                        <p>{{plat.description}}</p>
+                        <p><span>Restaurant : </span>{{plat.restaurant_name}}</p>
+                        <p><span>Categorie : </span> {{plat.categorie_name}} </p>
+                        <h2>{{plat.prix}} Ar</h2>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button class="button" mat-button>Commander</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <mat-toolbar>
+        <button (click)="previous()" mat-button style="color:#4f992d;"><mat-icon style="color:#4f992d;">arrow_back</mat-icon>Precedant</button>
+        <div style="flex:1 1 auto;"></div>
+        <button (click)="next()" mat-button style="color:#4f992d;">Suivant<mat-icon style="color:#4f992d;">arrow_forward</mat-icon></button>
+    </mat-toolbar>
+</div>

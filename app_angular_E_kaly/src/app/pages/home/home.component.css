@@ -1,0 +1,14 @@
+.content{
+    padding: 16px;
+    width: 79%;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.backgreen{
+    background-color: #1b1b1bd3;
+}
+
+.button{
+    background-color: #4f992d;
+    color:white;
+}

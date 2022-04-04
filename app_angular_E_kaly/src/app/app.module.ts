@@ -22,6 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 
+//import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,8 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     MatToolbarModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    //NgxLoadingSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
