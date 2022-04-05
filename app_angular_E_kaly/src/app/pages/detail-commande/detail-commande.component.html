@@ -29,15 +29,15 @@
                     <span>prix unitaire : {{plat.plat_prix}}</span>
                     <span>nombre : {{plat.nombre}}</span>
                     <div class="card-content" >
-                        <a mat-button title="diminuer"><mat-icon>remove</mat-icon></a>
-                        <a mat-button title="augmenter"><mat-icon>add</mat-icon></a>
-                        <a mat-button ><mat-icon style="color: red;" >remove_circle_outline</mat-icon></a>
+                        <a mat-button (click)="minusPlatNumber(plat)" title="diminuer"><mat-icon>remove</mat-icon></a>
+                        <a mat-button (click)="plusPlatNumber(plat)" title="augmenter"><mat-icon>add</mat-icon></a>
+                        <a mat-button (click)="removePlat(plat)" ><mat-icon style="color: red;" >remove_circle_outline</mat-icon></a>
                     </div>
                 </mat-card>
             </div>
 
             <mat-toolbar>
-                <button (click)="makeOrder()" mat-button style="margin-left: 45%; background-color:#4f992d; color:white;">Términer</button>
+                <button (click)="actionOrder()" mat-button style="margin-left: 45%; background-color:#4f992d; color:white;">Términer</button>
             </mat-toolbar>
 
             <h2>Les plats du Restaurant</h2>
@@ -62,7 +62,7 @@
                                     <h2>{{plat.prix}} Ar</h2>
                                 </mat-card-content>
                                 <mat-card-actions>
-                                    <button class="button" mat-button>Ajouter à la commande</button>
+                                    <button (click)=" addPlat(plat)" class="button" mat-button>Ajouter à la commande</button>
                                 </mat-card-actions>
                             </mat-card>
                         </div>

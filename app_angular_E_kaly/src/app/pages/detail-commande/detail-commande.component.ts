@@ -61,10 +61,10 @@ export class DetailCommandeComponent implements OnInit {
         livreur_name: "",
         detail_commande : [
             {
-                plat_id: this.extraPlat._id,
-                plat_name: this.extraPlat.name,
-                plat_prix: this.extraPlat.prix,
-                nombre: 1
+              plat_id: this.extraPlat._id,
+              plat_name: this.extraPlat.name,
+              plat_prix: this.extraPlat.prix,
+              nombre: 1
             }
         ],
         etat: 0 
@@ -79,6 +79,26 @@ export class DetailCommandeComponent implements OnInit {
     if(this.action == 'update'){
       this.extraCommande = history.state.commande;
       //console.log(this.extraCommande);
+
+      this.CommandeObject = {
+        _id : this.extraCommande._id,
+        restaurant_id: this.extraCommande.restaurant_id,
+        restaurant_name: this.extraCommande.restaurant_name,
+        prix_global: this.extraCommande.prix_global,
+        client_id: this.extraCommande.client_id,
+        client_name: this.extraCommande.client_name,
+        client_contact: this.extraCommande.client_contact,
+        date_comande: this.extraCommande.date_comande,
+        lieu_adresse_livraison: this.extraCommande.lieu_adresse_livraison,
+        livreur_id: "",
+        livreur_name: "",
+        detail_commande : this.extraCommande.detail_commande,
+        etat: 0 
+      }
+
+      //avoir menu du restaurant
+      this.getPlatResto(this.extraCommande.restaurant_id);
+
     }
   }
 
@@ -97,6 +117,55 @@ export class DetailCommandeComponent implements OnInit {
       });
   }
 
+  //|--------------------|
+  //|  gestion des plat  |
+  //|--------------------|
+
+  //addPlat in list
+  addPlat(plat:any){
+    let tmpPlat = {
+      plat_id: plat._id,
+      plat_name: plat.name,
+      plat_prix: plat.prix,
+      nombre: 1
+    }
+    this.CommandeObject.prix_global = parseFloat(this.CommandeObject.prix_global) + parseFloat(plat.prix);
+    this.CommandeObject.detail_commande.push(tmpPlat);
+
+    console.log(this.CommandeObject, "add Plat");
+    
+  }
+
+  plusPlatNumber(plat:any){
+    plat.nombre++;
+    this.CommandeObject.prix_global = parseFloat(this.CommandeObject.prix_global) + parseFloat(plat.plat_prix);
+    //console.log(this.CommandeObject, "+ Plat");
+  }
+
+  minusPlatNumber(plat:any){
+    plat.nombre --;
+    this.CommandeObject.prix_global = parseFloat(this.CommandeObject.prix_global) - parseFloat(plat.plat_prix);
+    if(plat.nombre == 0){
+      this.removePlat(plat);
+    }
+  }
+
+  //removePlat in list
+  removePlat(plat:any){
+    this.CommandeObject.detail_commande = this.CommandeObject.detail_commande.filter((item: any) => item != plat);
+    this.CommandeObject.prix_global = parseFloat(this.CommandeObject.prix_global) - (parseFloat(plat.plat_prix)*parseInt(plat.nombre));
+    
+  }
+
+  //|-----------------------|
+  //| fin gestion des plat  |
+  //|-----------------------|
+
+
+  //|-------------------------|
+  //| gestion de la commande  |
+  //|-------------------------|
+  
   //inserer la commande
   makeOrder(){
     let result = this.clientService.makeOrdre(
@@ -122,5 +191,44 @@ export class DetailCommandeComponent implements OnInit {
       }
     });
   }
+
+  //modifier commande
+  updateOrder(){
+    let result = this.clientService.updateOrdre(
+        this.token, 
+        this.CommandeObject._id, 
+        this.CommandeObject.prix_global, 
+        this.CommandeObject.detail_commande, 
+        this.CommandeObject.lieu_adresse_livraison, 
+        this.CommandeObject.client_contact
+      );
+    result.subscribe((data:any) => {
+      //console.log(data);
+      if(data.status != 200){
+        alert("lors de la mise a jour de la commande");
+      }else{
+        //use cookie there
+        //console.log(data);
+        this.router.navigate(['/commande']);
+      }
+    });
+  }
+
+  //determinate action
+  actionOrder(){
+    if(this.action == "insert"){
+      this.makeOrder();
+    }
+    else if(this.action == "update"){
+      this.updateOrder();
+    }
+    else{
+      alert("action non defini");
+    }
+  }
+
+  //|-----------------------------|
+  //| fin gestion de la commande  |
+  //|-----------------------------|
 
 }

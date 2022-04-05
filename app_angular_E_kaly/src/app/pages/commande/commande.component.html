@@ -3,15 +3,18 @@
     <mat-toolbar>Commande</mat-toolbar>
     <div class="content">
         <div fxLayoutGap="16px grid" >
-            <div *ngFor="let plat of [1,2,3,4,1,5]">
+            <div style="height:500px" *ngIf="MesCommandes.length == 0">
+                <h1 style="color: black;">Aucun resulat !</h1>
+            </div>
+            <div *ngFor="let commande of MesCommandes">
                 <mat-card class="card-content" fxLayout="row">
-                    <span><b>Commande du 2022/02/30 - Jean de la Croix</b></span>
-                    <span>Restaurant : <b>Bozaka</b></span>
-                    <span>Total : <b>1200ar</b></span>
+                    <span><b>Commande du {{commande.date_comande}}</b></span>
+                    <span>Restaurant : <b>{{commande.restaurant_name}}</b></span>
+                    <span>Total : <b>{{commande.prix_global}}</b></span>
                     <div class="card-content" >
                         <a mat-button title="annuler la commande"><mat-icon style="color: red;">remove_circle_outline</mat-icon></a>
                         <a mat-button title="valider la commande"><mat-icon style="color:#4f992d;">task_alt</mat-icon></a>
-                        <a mat-button ><mat-icon >arrow_forward</mat-icon></a>
+                        <a mat-button (click)="getDetailCommande(commande)" ><mat-icon >arrow_forward</mat-icon></a>
                     </div>
                 </mat-card>
             </div>
