@@ -17,4 +17,29 @@ export class ClientService {
     return this.http.get(`${baseUrl}/client/plat/voirPlat/${restaurant_id}/${per_page}/${page_number}`);
   }
 
+  makeOrdre(token:string, restaurant_id:string, restaurant_name:string, prix_global:number, client_id:string, client_name:string, client_contact:string, date_comande:string, lieu_adresse_livraison:string, detail_commande:any){
+      let postData = {
+        "token":token,
+        "restaurant_id": restaurant_id,
+        "restaurant_name": restaurant_name,
+        "prix_global": prix_global, 
+        "client_id": client_id, 
+        "client_name": client_name, 
+        "client_contact": client_contact, 
+        "date_comande": date_comande, 
+        "lieu_adresse_livraison":lieu_adresse_livraison, 
+        "detail_commande":detail_commande
+    }
+    return this.http.post(`${baseUrl}/client/commande/ajout`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    })
+  }
+
+  getCommande(token:string, client_id:string, per_page:Number, page_number:Number){
+    return this.http.get(`${baseUrl}/client/commande/voirCommande/${client_id}/${per_page}/${page_number}?token=${token}`);
+  }
+
 }
