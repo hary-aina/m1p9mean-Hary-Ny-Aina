@@ -1,0 +1,28 @@
+.content{
+    padding: 16px;
+    width: 79%;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.backgreen{
+    background-color: #1b1b1bd3;
+}
+
+.buttonDo{
+    background-color: #4f992d;
+    color:white;
+}
+
+.buttonDont{
+    background-color: red;
+    color:white;
+}
+
+.buttonNeutre{
+    background-color: rgb(184, 184, 184);
+    color:white;
+}
+
+.card{
+    width: 350px;
+}

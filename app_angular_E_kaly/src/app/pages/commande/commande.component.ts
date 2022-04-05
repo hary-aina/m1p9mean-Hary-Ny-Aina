@@ -55,4 +55,42 @@ export class CommandeComponent implements OnInit {
     this.router.navigate(['/detail_commande'], {state:{action:'update', commande:macommande}});
   }
 
+  //|------------------------|
+  //|  gestion des commandes |
+  //|------------------------|
+
+  //valider ma commande
+  validateOrder(macommande:any){
+    let result = this.clientService.validateOrdre(this.token, macommande._id);
+    result.subscribe((data:any) => {
+      //console.log(data);
+      if(data.status != 200){
+        alert("lors de la mise a jour de la commande");
+      }else{
+        //use cookie there
+        //console.log(data);
+        //this.router.navigate(['/commande']);
+        macommande.etat = 10;
+      }
+    });
+  }
+
+  //valider ma commande
+  annulerOrder(macommande:any){
+    let result = this.clientService.annulerOrdre(this.token, macommande._id);
+    result.subscribe((data:any) => {
+      //console.log(data);
+      if(data.status != 200){
+        alert("lors de la mise a jour de la commande");
+      }else{
+        //use cookie there
+        this.MesCommandes = this.MesCommandes.filter((item: any) => item != macommande);
+      }
+    });
+  }
+
+  //|---------------------------|
+  //| fin gestion des commandes |
+  //|---------------------------|
+
 }

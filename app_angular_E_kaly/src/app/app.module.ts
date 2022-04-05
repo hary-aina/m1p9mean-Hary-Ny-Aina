@@ -24,6 +24,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { CommandeComponent } from './pages/commande/commande.component';
 import { DetailCommandeComponent } from './pages/detail-commande/detail-commande.component';
+import { LoginRestoComponent } from './pages/RestaurantBO/login-resto/login-resto.component';
+import { NavbarRestoComponent } from './pages/RestaurantBO/navbar-resto/navbar-resto.component';
+import { HomeRestoComponent } from './pages/RestaurantBO/home-resto/home-resto.component';
 
 //import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
 
@@ -35,7 +38,10 @@ import { DetailCommandeComponent } from './pages/detail-commande/detail-commande
     HomeComponent,
     NavbarComponent,
     CommandeComponent,
-    DetailCommandeComponent
+    DetailCommandeComponent,
+    LoginRestoComponent,
+    NavbarRestoComponent,
+    HomeRestoComponent
   ],
   imports: [
     BrowserModule,

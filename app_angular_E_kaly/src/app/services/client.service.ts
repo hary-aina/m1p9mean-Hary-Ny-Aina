@@ -58,4 +58,28 @@ export class ClientService {
     return this.http.get(`${baseUrl}/client/commande/voirCommande/${client_id}/${per_page}/${page_number}?token=${token}`);
   }
 
+  validateOrdre(token:string, commande_id:string){
+    let postData = {
+      "token":token 
+    }
+    return this.http.put(`${baseUrl}/client/commande/valider/${commande_id}`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    })
+  }
+
+  annulerOrdre(token:string, commande_id:string){
+    let postData = {
+      "token":token 
+    }
+    return this.http.put(`${baseUrl}/client/commande/annuler/${commande_id}`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    })
+  }
+
 }

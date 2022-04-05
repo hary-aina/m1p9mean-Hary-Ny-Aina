@@ -12,8 +12,19 @@
                     <span>Restaurant : <b>{{commande.restaurant_name}}</b></span>
                     <span>Total : <b>{{commande.prix_global}}</b></span>
                     <div class="card-content" >
-                        <a mat-button title="annuler la commande"><mat-icon style="color: red;">remove_circle_outline</mat-icon></a>
-                        <a mat-button title="valider la commande"><mat-icon style="color:#4f992d;">task_alt</mat-icon></a>
+                        <nav *ngIf="commande.etat == 0">
+                            <a mat-button (click)="annulerOrder(commande)" title="annuler la commande"><mat-icon style="color: red;">remove_circle_outline</mat-icon></a>
+                            <a mat-button (click)=" validateOrder(commande)" title="valider la commande"><mat-icon style="color:#4f992d;">task_alt</mat-icon></a>
+                        </nav>
+                        <nav *ngIf="commande.etat == 10">
+                            <p style="color:#3f51b5">En cours de preparation ...</p>
+                        </nav>
+                        <nav *ngIf="commande.etat == 20">
+                            <p style="color:#fad506">Pret pour la livraison</p>
+                        </nav>
+                        <nav *ngIf="commande.etat == 25">
+                            <p style="color:#37fa06"> la livraison est en cours</p>
+                        </nav>
                         <a mat-button (click)="getDetailCommande(commande)" ><mat-icon >arrow_forward</mat-icon></a>
                     </div>
                 </mat-card>

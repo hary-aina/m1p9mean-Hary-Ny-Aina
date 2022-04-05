@@ -93,7 +93,7 @@ export class DetailCommandeComponent implements OnInit {
         livreur_id: "",
         livreur_name: "",
         detail_commande : this.extraCommande.detail_commande,
-        etat: 0 
+        etat: this.extraCommande.etat
       }
 
       //avoir menu du restaurant
