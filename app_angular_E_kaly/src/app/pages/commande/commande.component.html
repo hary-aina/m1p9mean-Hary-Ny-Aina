@@ -17,6 +17,9 @@
                             <a mat-button (click)=" validateOrder(commande)" title="valider la commande"><mat-icon style="color:#4f992d;">task_alt</mat-icon></a>
                         </nav>
                         <nav *ngIf="commande.etat == 10">
+                            <p style="color:#f12d0a">En attente de preparation ...</p>
+                        </nav>
+                        <nav *ngIf="commande.etat == 15">
                             <p style="color:#3f51b5">En cours de preparation ...</p>
                         </nav>
                         <nav *ngIf="commande.etat == 20">

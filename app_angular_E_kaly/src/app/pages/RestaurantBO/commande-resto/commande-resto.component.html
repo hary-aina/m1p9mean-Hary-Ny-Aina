@@ -1,0 +1,61 @@
+<app-navbar-resto></app-navbar-resto>
+<div>
+    <mat-toolbar>Commande</mat-toolbar>
+    <div class="content">
+        <div fxLayoutGap="16px grid" >
+            <div style="height:500px" *ngIf="MesCommandes.length == 0">
+                <h1 style="color: black;">Aucun resulat !</h1>
+            </div>
+            <div *ngFor="let commande of MesCommandes">
+                <br>
+                <mat-card class="card-content" fxLayout="row">
+                    <span><b>Commande du {{commande.date_comande}}</b></span>
+                    <span>Restaurant : <b>{{commande.restaurant_name}}</b></span>
+                    <span>Total : <b>{{commande.prix_global}}</b></span>
+                    <div class="card-content" >
+                        <nav *ngIf="commande.etat == 10">
+                            <p style="color:#e73e0a">En attente de preparation ...</p>
+                        </nav>
+                        <nav *ngIf="commande.etat == 15">
+                            <p style="color:#3f51b5">En cours de preparation ...</p>
+                        </nav>
+                        <nav *ngIf="commande.etat == 20">
+                            <p style="color:#fad506">Pret pour la livraison</p>
+                        </nav>
+                        <nav *ngIf="commande.etat == 25">
+                            <p style="color:#37fa06"> la livraison est en cours</p>
+                        </nav>
+
+                        <nav *ngIf="commande.etat == 10">
+                            <a mat-button (click)="startPreparation(commande)" title="demmarer"><mat-icon style="color:#ee650a;">local_fire_department</mat-icon></a>
+                        </nav>
+                        <nav *ngIf="commande.etat == 15">
+                            <a mat-button (click)="endPreparation(commande)" title="pret a livrer"><mat-icon style="color:#4f992d;">delivery_dining</mat-icon></a>
+                        </nav>
+                    </div>
+                </mat-card>
+                <hr>
+                <mat-card >
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>Nom du plat</th>
+                                <th>prix unitaire</th>
+                                <th>nombre commander</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let detail of commande.detail_commande" >
+                                <td>{{detail.plat_name}}</td> 
+                                <td>{{detail.plat_prix}}</td>
+                                <td>{{detail.nombre}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+   
+</div>
+

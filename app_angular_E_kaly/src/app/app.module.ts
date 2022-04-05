@@ -27,6 +27,9 @@ import { DetailCommandeComponent } from './pages/detail-commande/detail-commande
 import { LoginRestoComponent } from './pages/RestaurantBO/login-resto/login-resto.component';
 import { NavbarRestoComponent } from './pages/RestaurantBO/navbar-resto/navbar-resto.component';
 import { HomeRestoComponent } from './pages/RestaurantBO/home-resto/home-resto.component';
+import { CommandeRestoComponent } from './pages/RestaurantBO/commande-resto/commande-resto.component';
+import { LoginEkalyComponent } from './pages/EkalyBO/login-ekaly/login-ekaly.component';
+import { NavbarEkalyComponent } from './pages/EkalyBO/navbar-ekaly/navbar-ekaly.component';
 
 //import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
 
@@ -41,7 +44,10 @@ import { HomeRestoComponent } from './pages/RestaurantBO/home-resto/home-resto.c
     DetailCommandeComponent,
     LoginRestoComponent,
     NavbarRestoComponent,
-    HomeRestoComponent
+    HomeRestoComponent,
+    CommandeRestoComponent,
+    LoginEkalyComponent,
+    NavbarEkalyComponent
   ],
   imports: [
     BrowserModule,
