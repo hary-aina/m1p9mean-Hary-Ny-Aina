@@ -1,0 +1,21 @@
+.content{
+    padding: 16px;
+    width: 79%;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.card-content{
+    display: flex;
+    justify-content: space-between ;
+}
+.content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 400px;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+    text-align: right;
+}

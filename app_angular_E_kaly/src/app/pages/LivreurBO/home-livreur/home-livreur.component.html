@@ -1,13 +1,12 @@
-<app-navbar-resto></app-navbar-resto>
+<app-navbar-livreur></app-navbar-livreur>
 <div>
-    <mat-toolbar>Commande</mat-toolbar>
+    <mat-toolbar>Commande A livrer</mat-toolbar>
     <div class="content">
         <div fxLayoutGap="16px grid" >
             <div style="height:500px" *ngIf="MesCommandes.length == 0">
                 <h1 style="color: black;">Aucun resulat !</h1>
             </div>
             <div *ngFor="let commande of MesCommandes">
-                
                 <mat-card style="border-top: 2px solid black ;" class="card-content" fxLayout="row">
 
                     <table class="content-table">
@@ -16,15 +15,9 @@
                                 <td>{{commande.date_comande}}</td> 
                                 <td><b>Restaurant : </b>{{commande.restaurant_name}}</td>
                                 <td><b>Total : </b>{{commande.prix_global}}</td>
-                                <td><b>lieu de livraison : </b>{{commande.client_contact}}</td>
+                                <td><b>Contact : </b>{{commande.client_contact}}</td>
                                 <td><b>lieu de livraison : </b>{{commande.lieu_adresse_livraison}}</td>
                                 <td>
-                                    <nav *ngIf="commande.etat == 10">
-                                        <span style="color:#e73e0a">En attente de preparation ...</span>
-                                    </nav>
-                                    <nav *ngIf="commande.etat == 15">
-                                        <span style="color:#3f51b5">En cours de preparation ...</span>
-                                    </nav>
                                     <nav *ngIf="commande.etat == 20">
                                         <span style="color:#fad506">Pret pour la livraison</span>
                                     </nav>
@@ -33,11 +26,11 @@
                                     </nav>
                                 </td>
                                 <td>
-                                    <nav *ngIf="commande.etat == 10">
-                                        <a mat-button (click)="startPreparation(commande)" title="demmarer"><mat-icon style="color:#ee650a;">local_fire_department</mat-icon></a>
+                                    <nav *ngIf="commande.etat == 20">
+                                        <a mat-button (click)="demmarerLivraison(commande)" title="demmarer la livraison"><mat-icon style="color:#ee650a;">local_fire_department</mat-icon></a>
                                     </nav>
-                                    <nav *ngIf="commande.etat == 15">
-                                        <a mat-button (click)="endPreparation(commande)" title="pret a livrer"><mat-icon style="color:#4f992d;">delivery_dining</mat-icon></a>
+                                    <nav *ngIf="commande.etat == 25">
+                                        <a mat-button (click)="cloturerLivraison(commande)" title="livrer"><mat-icon style="color:#4f992d;">delivery_dining</mat-icon></a>
                                     </nav>
                                 </td>
                             </tr>
@@ -48,12 +41,6 @@
                     <span>Restaurant : <b>{{commande.restaurant_name}}</b></span>
                     <span>Total : <b>{{commande.prix_global}}</b></span>
                     <div class="card-content" >
-                        <nav *ngIf="commande.etat == 10">
-                            <p style="color:#e73e0a">En attente de preparation ...</p>
-                        </nav>
-                        <nav *ngIf="commande.etat == 15">
-                            <p style="color:#3f51b5">En cours de preparation ...</p>
-                        </nav>
                         <nav *ngIf="commande.etat == 20">
                             <p style="color:#fad506">Pret pour la livraison</p>
                         </nav>
@@ -61,15 +48,13 @@
                             <p style="color:#37fa06"> la livraison est en cours</p>
                         </nav>
 
-                        <nav *ngIf="commande.etat == 10">
-                            <a mat-button (click)="startPreparation(commande)" title="demmarer"><mat-icon style="color:#ee650a;">local_fire_department</mat-icon></a>
+                        <nav *ngIf="commande.etat == 20">
+                            <a mat-button (click)="demmarerLivraison(commande)" title="demmarer"><mat-icon style="color:#ee650a;">local_fire_department</mat-icon></a>
                         </nav>
-                        <nav *ngIf="commande.etat == 15">
-                            <a mat-button (click)="endPreparation(commande)" title="pret a livrer"><mat-icon style="color:#4f992d;">delivery_dining</mat-icon></a>
+                        <nav *ngIf="commande.etat == 25">
+                            <a mat-button (click)="cloturerLivraison(commande)" title="livrer"><mat-icon style="color:#4f992d;">delivery_dining</mat-icon></a>
                         </nav>
                     </div> -->
-
-
                 </mat-card>
                 <hr>
                 <mat-card >
@@ -90,12 +75,9 @@
                         </tbody>
                     </table>
                 </mat-card>
-
                 <br><br>
-
             </div>
         </div>
     </div>
    
 </div>
-

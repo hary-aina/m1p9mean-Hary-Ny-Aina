@@ -4,12 +4,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-livreur',
+  templateUrl: './login-livreur.component.html',
+  styleUrls: ['./login-livreur.component.css']
 })
-export class LoginComponent implements OnInit {
-  
+export class LoginLivreurComponent implements OnInit {
+
   email = '';
   password = '';
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private cookie : CookieService,
     private router : Router,
   ) { 
-    this.email = "client@gmail.com";
+    this.email = "livreur@gmail.com";
     this.password = "1234";
   }
 
@@ -49,12 +49,12 @@ export class LoginComponent implements OnInit {
           this.error.error = "erreur lors de l'authentification";
         }else{
           //use cookie there
-          //console.log(data);
+          console.log(data);
           this.cookie.set('token', data.token);  
           this.cookie.set('user_id', data.data[0]._id);
           this.cookie.set('user_name', data.data[0].name);
           this.cookie.set('user_contact', data.data[0].contact);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/livreur-bo/home']);
         }
       });
     }

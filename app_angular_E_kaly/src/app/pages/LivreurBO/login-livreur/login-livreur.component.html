@@ -1,0 +1,25 @@
+<div style="background-image: url('../../../../assets/image/delivery.jpg');" fxLayoutAlign="center center" fxFlexFill>
+    <div fxLayout="column" style=" border-right: 3px solid; color: black;" fxLayoutAlign="center center" fxFlex="15">
+        <h1 style="font-size: 60px;"><mat-icon style="color:#4f992d;">fastfood</mat-icon><b>E-Kaly</b></h1>
+        <h2>Back-office Livraison</h2>
+    </div>
+    <div fxFlex="1">
+        
+    </div>
+    <mat-card fxFlex="30">
+        <p style="color: red;">{{error.error}}</p>
+        <form fxLayoutAlign="stretch" fxLayout="column">
+            <h1 style="text-align: center;">Connexion</h1>
+            <mat-form-field >
+                <input matInput placeholder="email" name="email" [(ngModel)]="email">
+            </mat-form-field>
+            <p style="color: red;">{{error.email}}</p>
+            <br>
+            <mat-form-field >
+                <input matInput placeholder="password" type="password"  name="password" [(ngModel)]="password">
+            </mat-form-field>
+            <p style="color: red;">{{error.pwd}}</p>
+            <button color="primary" mat-button type="button" (click)="login()">Login</button>
+        </form>        
+    </mat-card>  
+</div>

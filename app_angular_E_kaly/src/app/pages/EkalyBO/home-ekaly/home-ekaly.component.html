@@ -1,0 +1,56 @@
+<app-navbar-ekaly></app-navbar-ekaly>
+<div style="margin-top: 30px;">
+    <div class="content">
+        <div fxLayoutAlign="center" fxFlexFill>
+            <div  fxFlex="50">
+                <h2 style="text-align: center;">Commande pret pour la livraison</h2>
+
+                <div class="content">
+                    <div cdkDropList fxLayoutGap="16px grid" >
+                        <!-- <div style="height:500px" *ngIf="MesCommandes.length == 0">
+                            <h1 style="color: black;">Aucun resulat !</h1>
+                        </div> -->
+                        <div cdkDrag *ngFor="let commande of [1,2,3]">
+                            <mat-card class="card-content">
+                                <p><b>Commande du commande.date_comande</b></p>
+                                <p>Restaurant : <b>commande.restaurant_name</b></p>
+                                <p>nom client : <b>commande.client_name</b></p>
+                                <p>Total : <b>commande.prix_global</b></p>
+                                <mat-list>
+                                    <mat-list-item>1-----</mat-list-item>
+                                    <mat-list-item>1</mat-list-item>
+                                    <mat-list-item>1</mat-list-item>
+                                </mat-list>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div fxFlex="1">
+                
+            </div>
+            <div fxFlex="50">
+                <h2 style="text-align: center;">Ordre de livreur selon nombre de Commande</h2>
+                
+                <div class="content">
+                    <div fxLayoutGap="16px grid" >
+                        <!-- <div style="height:500px" *ngIf="MesCommandes.length == 0">
+                            <h1 style="color: black;">Aucun resulat !</h1>
+                        </div> -->
+                        <div *ngFor="let commande of [1,2,3]">
+                            <mat-card style="z-index: -1;" class="card-content">
+                                <p>Nom Liveur : <b>commande.restaurant_name</b></p>
+                                <p>contact : <b>commande.client_name</b></p>
+                                <p>etat : <b>commande.prix_global</b></p>
+                                <p>commande a liver: 5</p>
+                                <ul cdkDropList class="drop-area"></ul>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+            </div>  
+        </div>
+    </div>
+</div>

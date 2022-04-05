@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -30,6 +32,10 @@ import { HomeRestoComponent } from './pages/RestaurantBO/home-resto/home-resto.c
 import { CommandeRestoComponent } from './pages/RestaurantBO/commande-resto/commande-resto.component';
 import { LoginEkalyComponent } from './pages/EkalyBO/login-ekaly/login-ekaly.component';
 import { NavbarEkalyComponent } from './pages/EkalyBO/navbar-ekaly/navbar-ekaly.component';
+import { HomeEkalyComponent } from './pages/EkalyBO/home-ekaly/home-ekaly.component';
+import { LoginLivreurComponent } from './pages/LivreurBO/login-livreur/login-livreur.component';
+import { NavbarLivreurComponent } from './pages/LivreurBO/navbar-livreur/navbar-livreur.component';
+import { HomeLivreurComponent } from './pages/LivreurBO/home-livreur/home-livreur.component';
 
 //import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
 
@@ -47,7 +53,11 @@ import { NavbarEkalyComponent } from './pages/EkalyBO/navbar-ekaly/navbar-ekaly.
     HomeRestoComponent,
     CommandeRestoComponent,
     LoginEkalyComponent,
-    NavbarEkalyComponent
+    NavbarEkalyComponent,
+    HomeEkalyComponent,
+    LoginLivreurComponent,
+    NavbarLivreurComponent,
+    HomeLivreurComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +72,8 @@ import { NavbarEkalyComponent } from './pages/EkalyBO/navbar-ekaly/navbar-ekaly.
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    DragDropModule
     //NgxLoadingSpinnerModule,
   ],
   providers: [],
