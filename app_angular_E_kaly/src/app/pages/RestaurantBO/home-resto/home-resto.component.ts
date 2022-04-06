@@ -10,6 +10,10 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class HomeRestoComponent implements OnInit {
 
+  user_name : string;
+  user_id : string;
+  user_contact : string;
+  type_user_name : string;
   token:string;
   resto_id:string;
 
@@ -26,10 +30,19 @@ export class HomeRestoComponent implements OnInit {
   ) { 
     this.token = this.cookie.get('token');
     this.resto_id = this.cookie.get('restaurant_id');
+    this.user_name = this.cookie.get('user_name');
+    this.user_id = this.cookie.get('user_id');
+    this.user_contact = this.cookie.get('user_contact');
+    this.type_user_name = this.cookie.get('type_user_name');
   }
 
   ngOnInit(): void {
-    this.getPlat();
+    if(this.type_user_name != "restaurant" || this.token == undefined){
+      this.router.navigate(['/resto-bo/login']);
+    }
+    else{
+      this.getPlat();
+    }
   }
 
   makeVisible(plat:any){

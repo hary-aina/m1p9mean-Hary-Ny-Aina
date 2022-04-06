@@ -14,6 +14,8 @@ export class HomeLivreurComponent implements OnInit {
 
   user_name : string;
   user_id : string;
+  user_contact : string;
+  type_user_name : string;
   token : string;
 
   per_page = 10;
@@ -27,10 +29,17 @@ export class HomeLivreurComponent implements OnInit {
     this.token = this.cookie.get('token');  
     this.user_name = this.cookie.get('user_name');
     this.user_id = this.cookie.get('user_id');
+    this.user_contact = this.cookie.get('user_contact');
+    this.token = this.cookie.get('token');
+    this.type_user_name = this.cookie.get('type_user_name');
    }
 
   ngOnInit(): void {
-    this.avoirCommande();
+    if(this.type_user_name != "livreur" || this.token == undefined){
+      this.router.navigate(['/livreur-bo/login']);
+    }else{
+      this.avoirCommande();
+    }
   }
 
   avoirCommande(){

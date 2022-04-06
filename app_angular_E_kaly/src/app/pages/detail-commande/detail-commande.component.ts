@@ -22,6 +22,8 @@ export class DetailCommandeComponent implements OnInit {
   Client_id : string;
   Client_contact : string;
 
+  type_user_name : string;
+
   //pagination du menu
   per_page = 10;
   page_number = 1;
@@ -36,68 +38,75 @@ export class DetailCommandeComponent implements OnInit {
     this.Client_id = this.cookie.get('user_id');
     this.Client_contact = this.cookie.get('user_contact');
     this.token = this.cookie.get('token');
+    this.type_user_name = this.cookie.get('type_user_name');
    }
 
   ngOnInit(): void {
-    //determination de l'action
-    this.action = history.state.action;
 
-    //nouvel commande
-    if(this.action == 'insert'){
-      this.extraPlat = history.state.plat;
+    if(this.type_user_name != "client" || this.token == undefined){
+      this.router.navigate(['/login']);
+    }else{
+      //determination de l'action
+      this.action = history.state.action;
 
-      let now = new Date();
+      //nouvel commande
+      if(this.action == 'insert'){
+        this.extraPlat = history.state.plat;
 
-      this.CommandeObject = {
-        restaurant_id: this.extraPlat.restaurant_id,
-        restaurant_name: this.extraPlat.restaurant_name,
-        prix_global: this.extraPlat.prix,
-        client_id: this.Client_id,
-        client_name: this.Client_name,
-        client_contact: this.Client_contact,
-        date_comande: now.toISOString().split('T')[0]+" "+now.toISOString().split('T')[1],
-        lieu_adresse_livraison: "",
-        livreur_id: "",
-        livreur_name: "",
-        detail_commande : [
-            {
-              plat_id: this.extraPlat._id,
-              plat_name: this.extraPlat.name,
-              plat_prix: this.extraPlat.prix,
-              nombre: 1
-            }
-        ],
-        etat: 0 
+        let now = new Date();
+
+        this.CommandeObject = {
+          restaurant_id: this.extraPlat.restaurant_id,
+          restaurant_name: this.extraPlat.restaurant_name,
+          prix_global: this.extraPlat.prix,
+          client_id: this.Client_id,
+          client_name: this.Client_name,
+          client_contact: this.Client_contact,
+          date_comande: now.toISOString().split('T')[0]+" "+now.toISOString().split('T')[1],
+          lieu_adresse_livraison: "",
+          livreur_id: "",
+          livreur_name: "",
+          detail_commande : [
+              {
+                plat_id: this.extraPlat._id,
+                plat_name: this.extraPlat.name,
+                plat_prix: this.extraPlat.prix,
+                nombre: 1
+              }
+          ],
+          etat: 0 
+        }
+
+        //avoir menu du restaurant
+        this.getPlatResto(this.extraPlat.restaurant_id);
+
       }
 
-      //avoir menu du restaurant
-      this.getPlatResto(this.extraPlat.restaurant_id);
+      //modification commande
+      if(this.action == 'update'){
+        this.extraCommande = history.state.commande;
+        //console.log(this.extraCommande);
 
-    }
+        this.CommandeObject = {
+          _id : this.extraCommande._id,
+          restaurant_id: this.extraCommande.restaurant_id,
+          restaurant_name: this.extraCommande.restaurant_name,
+          prix_global: this.extraCommande.prix_global,
+          client_id: this.extraCommande.client_id,
+          client_name: this.extraCommande.client_name,
+          client_contact: this.extraCommande.client_contact,
+          date_comande: this.extraCommande.date_comande,
+          lieu_adresse_livraison: this.extraCommande.lieu_adresse_livraison,
+          livreur_id: "",
+          livreur_name: "",
+          detail_commande : this.extraCommande.detail_commande,
+          etat: this.extraCommande.etat
+        }
 
-    //modification commande
-    if(this.action == 'update'){
-      this.extraCommande = history.state.commande;
-      //console.log(this.extraCommande);
+        //avoir menu du restaurant
+        this.getPlatResto(this.extraCommande.restaurant_id);
 
-      this.CommandeObject = {
-        _id : this.extraCommande._id,
-        restaurant_id: this.extraCommande.restaurant_id,
-        restaurant_name: this.extraCommande.restaurant_name,
-        prix_global: this.extraCommande.prix_global,
-        client_id: this.extraCommande.client_id,
-        client_name: this.extraCommande.client_name,
-        client_contact: this.extraCommande.client_contact,
-        date_comande: this.extraCommande.date_comande,
-        lieu_adresse_livraison: this.extraCommande.lieu_adresse_livraison,
-        livreur_id: "",
-        livreur_name: "",
-        detail_commande : this.extraCommande.detail_commande,
-        etat: this.extraCommande.etat
       }
-
-      //avoir menu du restaurant
-      this.getPlatResto(this.extraCommande.restaurant_id);
 
     }
   }

@@ -42,7 +42,7 @@ export class LoginEkalyComponent implements OnInit {
         this.error.pwd = (this.password == '') ? 'Ce champ est obligatoire' : '';
     } 
     else {
-      let result = this.authentificationService.login(this.email, this.password);
+      let result = this.authentificationService.loginResponsable(this.email, this.password);
       result.subscribe((data:any) => {
         //console.log(data);
         if(data.status != 200){
@@ -54,6 +54,7 @@ export class LoginEkalyComponent implements OnInit {
           this.cookie.set('user_id', data.data[0]._id);
           this.cookie.set('user_name', data.data[0].name);
           this.cookie.set('user_contact', data.data[0].contact);
+          this.cookie.set('type_user_name', data.data[0].type_user_name);
           this.router.navigate(['/ekaly-bo/home']);
         }
       });

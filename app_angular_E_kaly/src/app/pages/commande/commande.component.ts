@@ -17,6 +17,8 @@ export class CommandeComponent implements OnInit {
   Client_contact : string;
   token : string;
 
+  type_user_name : string;
+
   //pagination du menu
   per_page = 10;
   page_number = 1;
@@ -29,11 +31,17 @@ export class CommandeComponent implements OnInit {
     this.Client_name = this.cookie.get('user_name');
     this.Client_id = this.cookie.get('user_id');
     this.Client_contact = this.cookie.get('user_contact');
+    this.Client_contact = this.cookie.get('user_contact');
     this.token = this.cookie.get('token');
+    this.type_user_name = this.cookie.get('type_user_name');
   }
 
   ngOnInit(): void {
-    this.getMyCommande();
+    if(this.type_user_name != "client" || this.token == undefined){
+      this.router.navigate(['/login']);
+    }else{
+      this.getMyCommande();
+    }
   }
 
   //avoir mes commandes

@@ -42,7 +42,7 @@ export class LoginRestoComponent implements OnInit {
         this.error.pwd = (this.password == '') ? 'Ce champ est obligatoire' : '';
     } 
     else {
-      let result = this.authentificationService.login(this.email, this.password);
+      let result = this.authentificationService.loginResto(this.email, this.password);
       result.subscribe((data:any) => {
         //console.log(data);
         if(data.status != 200){
@@ -56,6 +56,7 @@ export class LoginRestoComponent implements OnInit {
           this.cookie.set('user_contact', data.data[0].contact);
           this.cookie.set('restaurant_id', data.data[0].restaurant_id);
           this.cookie.set('restaurant_name', data.data[0].restaurant_name);
+          this.cookie.set('type_user_name', data.data[0].type_user_name);
           this.router.navigate(['/resto-bo/home']);
         }
       });

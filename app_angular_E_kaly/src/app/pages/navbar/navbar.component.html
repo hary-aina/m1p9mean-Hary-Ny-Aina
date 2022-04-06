@@ -1,7 +1,9 @@
-<mat-toolbar style="background-color: #353333; color: white;">
+<mat-toolbar style="background-image: url('../../../../assets/image/fondClient.jpg'); color: white;">
     <span style="font-size: 45px;"><mat-icon style="color:#4f992d;">fastfood</mat-icon>E-Kaly</span>
     <div class="spacer"></div>
     <a mat-button routerLink="/home" >Home</a>
     <a mat-button routerLink="/commande" >Mes commandes</a>
-    <a mat-raised-button color="primary" routerLink="/login" >Login</a>
+    <a *ngIf="token == ''" mat-button routerLink="/inscription" >Inscription</a>
+    <a *ngIf="token == ''" mat-raised-button routerLink="/login" >Login</a>
+    <a *ngIf="token != ''" mat-raised-button color="accent" routerLink="/login" >Deconnexion</a>
 </mat-toolbar>

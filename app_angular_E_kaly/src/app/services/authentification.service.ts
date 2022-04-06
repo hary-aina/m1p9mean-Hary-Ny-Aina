@@ -25,4 +25,56 @@ export class AuthentificationService {
     })
   }
 
+  loginClient(email:string, pwd:string) {
+    let postData = {
+        "email": email,
+        "password": pwd
+    }
+    return this.http.post(`${baseUrl}/auth/client/login`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+  }
+
+  loginResto(email:string, pwd:string) {
+    let postData = {
+        "email": email,
+        "password": pwd
+    }
+    return this.http.post(`${baseUrl}/auth/resto/login`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+  }
+
+  loginResponsable(email:string, pwd:string) {
+    let postData = {
+        "email": email,
+        "password": pwd
+    }
+    return this.http.post(`${baseUrl}/auth/responsable/login`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+  }
+
+  loginLivreur(email:string, pwd:string) {
+    let postData = {
+        "email": email,
+        "password": pwd
+    }
+    return this.http.post(`${baseUrl}/auth/livreur/login`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+  }
+
 }
