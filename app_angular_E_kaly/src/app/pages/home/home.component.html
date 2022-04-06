@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
 <div class="backgreen">
-    <mat-toolbar>Home</mat-toolbar>
+    <mat-toolbar>
+        <span>Home</span>
+        <div style="flex:1 1 auto;"></div>
+        <input style="height: 46%;" [(ngModel)]="search" >
+        <button (click)="searchPlat()" mat-raised-button style="background-color: black;"><mat-icon style="color:#4f992d;">search</mat-icon></button>
+    </mat-toolbar>
     <div class="content">
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
             <div style="height:500px" *ngIf="plats.length == 0">

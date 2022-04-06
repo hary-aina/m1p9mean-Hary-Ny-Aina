@@ -14,16 +14,39 @@ export class HomeComponent implements OnInit {
   page_number = 1;
   plats : any = [];
 
+  search : string;
+
   error = "";
 
   constructor(
     private clientService : ClientService,
     private cookie : CookieService,
     private router : Router
-  ) { }
+  ) {
+    this.search = "";
+   }
 
   ngOnInit(): void {
     this.getPlat();
+  }
+
+  searchPlat(){
+    this.per_page = 10;
+    this.page_number = 1;
+    if(this.search != ""){
+      let result = this.clientService.searchPlat(this.search, this.per_page, this.page_number);
+      result.subscribe((data:any) => {
+        if(data.status != 200){
+          this.error = "erreur lors du cosulation du serveur";
+        }else{
+          //use cookie there
+          this.plats = data.data;
+          console.log(this.plats);
+        }
+      });
+    }else{
+      this.getPlat();
+    }
   }
 
   getPlat(){
@@ -41,7 +64,8 @@ export class HomeComponent implements OnInit {
 
   next(){
     this.page_number ++;
-    let result = this.clientService.getPlat(this.per_page, this.page_number);
+    if(this.search != ""){
+      let result = this.clientService.searchPlat(this.search, this.per_page, this.page_number);
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
@@ -51,11 +75,25 @@ export class HomeComponent implements OnInit {
           console.log(this.plats);
         }
       });
+    }
+    else{
+      let result = this.clientService.getPlat(this.per_page, this.page_number);
+      result.subscribe((data:any) => {
+        if(data.status != 200){
+          this.error = "erreur lors du cosulation du serveur";
+        }else{
+          //use cookie there
+          this.plats = data.data;
+          console.log(this.plats);
+        }
+      });
+    }
   }
 
   previous(){
     this.page_number --;
-    let result = this.clientService.getPlat(this.per_page, this.page_number);
+    if(this.search != ""){
+      let result = this.clientService.searchPlat(this.search, this.per_page, this.page_number);
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
@@ -65,6 +103,19 @@ export class HomeComponent implements OnInit {
           console.log(this.plats);
         }
       });
+    }
+    else{
+      let result = this.clientService.getPlat(this.per_page, this.page_number);
+      result.subscribe((data:any) => {
+        if(data.status != 200){
+          this.error = "erreur lors du cosulation du serveur";
+        }else{
+          //use cookie there
+          this.plats = data.data;
+          console.log(this.plats);
+        }
+      });
+    }
   }
 
   makeOrder(plat:any){

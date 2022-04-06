@@ -17,6 +17,10 @@ export class ClientService {
     return this.http.get(`${baseUrl}/client/plat/voirPlat/${restaurant_id}/${per_page}/${page_number}`);
   }
 
+  searchPlat(searchPlat:string, per_page:Number, page_number:Number){
+    return this.http.get(`${baseUrl}/client/plat/searchPlat/${searchPlat}/${per_page}/${page_number}`);
+  }
+
   updateOrdre(token:string, commande_id:string, prix_global:string, detail_commande:any, lieu_adresse_livraison:string, client_contact:string){
     let postData = {
       "token":token,
