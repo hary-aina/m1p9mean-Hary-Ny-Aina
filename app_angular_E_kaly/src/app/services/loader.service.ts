@@ -12,10 +12,11 @@ export class LoaderService {
   }
 
   show() {
-     this.isLoading.next(true);
+    //alert('show line 15 loader.service.ts');
+    this.isLoading.next(true);
   }
 
   hide() {
-     this.isLoading.next(false);
+    this.isLoading.next(false);
   }
 }

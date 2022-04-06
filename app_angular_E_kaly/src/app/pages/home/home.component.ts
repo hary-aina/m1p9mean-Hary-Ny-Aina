@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private clientService : ClientService,
     private cookie : CookieService,
-    private router : Router
+    private router : Router,
   ) {
     this.search = "";
    }
