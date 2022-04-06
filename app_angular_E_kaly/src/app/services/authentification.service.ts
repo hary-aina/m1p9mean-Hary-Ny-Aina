@@ -77,4 +77,33 @@ export class AuthentificationService {
     });
   }
 
+  generateInscriptionCode(email:string, name:string){
+    let postData = {
+        "email": email,
+        "name": name
+    }
+    return this.http.post(`${baseUrl}/auth/client/generateInscriptionCode`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+  }
+
+  inscription(name:string, email:string, password:string, contact:string, code:string){
+    let postData = {
+        "name":name, 
+        "email":email, 
+        "password":password, 
+        "contact":contact, 
+        "code":code
+    }
+    return this.http.post(`${baseUrl}/auth/client/inscription`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+  }
+
 }
