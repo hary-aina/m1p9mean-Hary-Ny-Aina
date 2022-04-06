@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -36,8 +37,12 @@ import { HomeEkalyComponent } from './pages/EkalyBO/home-ekaly/home-ekaly.compon
 import { LoginLivreurComponent } from './pages/LivreurBO/login-livreur/login-livreur.component';
 import { NavbarLivreurComponent } from './pages/LivreurBO/navbar-livreur/navbar-livreur.component';
 import { HomeLivreurComponent } from './pages/LivreurBO/home-livreur/home-livreur.component';
+import { LoaderComponent } from './pages/loader/loader.component';
 
 //import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,6 +63,7 @@ import { HomeLivreurComponent } from './pages/LivreurBO/home-livreur/home-livreu
     LoginLivreurComponent,
     NavbarLivreurComponent,
     HomeLivreurComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,10 +79,17 @@ import { HomeLivreurComponent } from './pages/LivreurBO/home-livreur/home-livreu
     BrowserAnimationsModule,
     MatIconModule,
     MatListModule,
-    DragDropModule
+    DragDropModule,
+    MatProgressSpinnerModule
     //NgxLoadingSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpLoadInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
