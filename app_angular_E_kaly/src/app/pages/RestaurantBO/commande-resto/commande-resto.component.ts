@@ -40,7 +40,7 @@ export class CommandeRestoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.type_user_name != "restaurant" || this.token == undefined){
+    if(!(this.type_user_name == "restaurant" && this.token != undefined)){
       this.router.navigate(['/resto-bo/login']);
     }
     else{

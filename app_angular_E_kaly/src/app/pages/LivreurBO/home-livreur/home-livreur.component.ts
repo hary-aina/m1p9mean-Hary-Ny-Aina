@@ -35,7 +35,7 @@ export class HomeLivreurComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(this.type_user_name != "livreur" || this.token == undefined){
+    if(!(this.type_user_name == "livreur" && this.token != undefined)){
       this.router.navigate(['/livreur-bo/login']);
     }else{
       this.avoirCommande();

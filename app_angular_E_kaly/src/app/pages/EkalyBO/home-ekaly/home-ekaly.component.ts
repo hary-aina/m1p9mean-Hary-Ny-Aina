@@ -28,7 +28,7 @@ export class HomeEkalyComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.type_user_name != "responsable" || this.token == undefined){
+    if(!(this.type_user_name == "responsable" && this.token != undefined)){
       this.router.navigate(['/ekaly-bo/login']);
     }else{
       //things to do on init

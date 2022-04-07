@@ -76,6 +76,17 @@ export class LivreurComponent implements OnInit {
     this.showDropInput = 0;
   }
 
-  
+  asignLivraison(){
+    let result = this.ekalyService.asignLivraison(this.token, this.commandes, this.livreurSelected._id, this.livreurSelected.name);
+    result.subscribe((data:any) => {
+      if(data.status != 200){
+        alert("erreur lors du cosulation du serveur");
+      }else{
+        //use cookie there
+        this.livreurSelected.nombre_commande += this.commandes.length;
+        this.commandes = [];
+      }
+    });
+  }
 
 }

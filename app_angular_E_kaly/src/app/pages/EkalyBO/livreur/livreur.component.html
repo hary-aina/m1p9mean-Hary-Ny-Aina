@@ -15,6 +15,9 @@
     </div>
     <div *ngIf="showDropInput == 1">
         <mat-card class="card-content">
+            <p>Nom Liveur : <b>{{livreurSelected.name}}</b></p>
+            <p>contact : <b>{{livreurSelected.contact}}</b></p>
+            <p>commande a livrée: {{livreurSelected.nombre_commande}}</p>
             <ul cdkDropList class="drop-area"  [cdkDropListData]="commandes" (cdkDropListDropped)="drop($event)">
                 <div cdkDrag *ngFor="let commande of commandes">
                     <mat-card style=" border-top: 2px solid black; border-left: none;" class="card-content">
@@ -22,25 +25,26 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <b>Commande du commande.date_comande</b>
+                                        <b>Commande du {{commande.date_comande}}</b>
                                     </td>
                                     <td>
-                                        Restaurant : <b>commande.restaurant_name</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        nom client : <b>commande.client_name</b>
-                                    </td>
-                                    <td>
-                                        contact Client : <b>commande.client_contact</b>
+                                        Restaurant : <b>{{commande.restaurant_name}}</b>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
+                                        nom client : <b>{{commande.client_name}}</b>
                                     </td>
                                     <td>
-                                        Total : <b>commande.total</b>
+                                        contact Client : <b>{{commande.client_contact}}</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        address de livraison : <b>{{commande.lieu_adresse_livraison}}</b>
+                                    </td>
+                                    <td>
+                                        Total : <b>{{commande.prix_global}}</b>
                                     </td>
                                 </tr>
                             </tbody>
@@ -48,15 +52,10 @@
                         <b style="text-align: center;">Detail de la livraison</b>
                         <table class="content-table-detail">
                             <tbody>
-                                <tr>
-                                    <td>Lasary karoty</td>
-                                    <td>2000Ar</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Lasary karoty</td>
-                                    <td>2000Ar</td>
-                                    <td>2</td>
+                                <tr *ngFor="let plat of commande.detail_commande">
+                                    <td>{{plat.plat_name}}</td>
+                                    <td>Pu : {{plat.plat_prix}} Ar</td>
+                                    <td>{{plat.nombre}}</td>
                                 </tr>    
                             </tbody>
                         </table>
@@ -64,9 +63,9 @@
                 </div>
             </ul>
             <button *ngIf="commandes.length == 0" disabled="disabled" color="primary"  mat-raised-button type="button">asigné</button>
-            <button *ngIf="commandes.length != 0" color="primary"  mat-raised-button type="button">asigné</button>
+            <button *ngIf="commandes.length != 0" color="primary" (click)="asignLivraison()" mat-raised-button type="button">asigné</button>
             <button *ngIf="commandes.length == 0" commandes color="accent" (click)="undpoAsignateCommande()" mat-button type="button">retour</button>
-            <button *ngIf="commandes.length != 0" commandes disabled="disabled" color="accent" (click)="undpoAsignateCommande()" mat-button type="button">retour</button>
+            <button *ngIf="commandes.length != 0" commandes disabled="disabled" color="accent" mat-button type="button">retour</button>
         </mat-card>
     </div>
 </div>

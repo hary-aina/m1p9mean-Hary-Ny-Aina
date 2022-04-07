@@ -37,7 +37,7 @@ export class CommandeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.type_user_name != "client" || this.token == undefined){
+    if(!(this.type_user_name == "client" && this.token != undefined)){
       this.router.navigate(['/login']);
     }else{
       this.getMyCommande();
