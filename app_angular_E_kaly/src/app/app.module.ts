@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,6 +43,8 @@ import { LoaderComponent } from './pages/loader/loader.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
+import { CommandeToDeliverComponent } from './pages/EkalyBO/commande-to-deliver/commande-to-deliver.component';
+import { LivreurComponent } from './pages/EkalyBO/livreur/livreur.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
     NavbarLivreurComponent,
     HomeLivreurComponent,
     LoaderComponent,
+    CommandeToDeliverComponent,
+    LivreurComponent,
   ],
   imports: [
     BrowserModule,

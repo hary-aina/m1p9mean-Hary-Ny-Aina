@@ -1,0 +1,72 @@
+
+<div fxLayoutGap="16px grid" >
+    <div style="height:500px" *ngIf="livreurs.length == 0">
+        <h1 style="color: black;">Aucun resulat !</h1>
+    </div>
+    <div fxLayoutGap="16px grid" *ngIf="showDropInput == 0">
+        <div *ngFor="let livreur of livreurs">
+            <mat-card class="card-content">
+                <p>Nom Liveur : <b>{{livreur.name}}</b></p>
+                <p>contact : <b>{{livreur.contact}}</b></p>
+                <p>commande a livrée: {{livreur.nombre_commande}}</p>
+                <button color="primary" (click)="letsAsignateCommande(livreur)"  mat-raised-button type="button">asigné commande</button>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="showDropInput == 1">
+        <mat-card class="card-content">
+            <ul cdkDropList class="drop-area"  [cdkDropListData]="commandes" (cdkDropListDropped)="drop($event)">
+                <div cdkDrag *ngFor="let commande of commandes">
+                    <mat-card style=" border-top: 2px solid black; border-left: none;" class="card-content">
+                        <table  class="content-table" >
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b>Commande du commande.date_comande</b>
+                                    </td>
+                                    <td>
+                                        Restaurant : <b>commande.restaurant_name</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        nom client : <b>commande.client_name</b>
+                                    </td>
+                                    <td>
+                                        contact Client : <b>commande.client_contact</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        Total : <b>commande.total</b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <b style="text-align: center;">Detail de la livraison</b>
+                        <table class="content-table-detail">
+                            <tbody>
+                                <tr>
+                                    <td>Lasary karoty</td>
+                                    <td>2000Ar</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Lasary karoty</td>
+                                    <td>2000Ar</td>
+                                    <td>2</td>
+                                </tr>    
+                            </tbody>
+                        </table>
+                    </mat-card>
+                </div>
+            </ul>
+            <button *ngIf="commandes.length == 0" disabled="disabled" color="primary"  mat-raised-button type="button">asigné</button>
+            <button *ngIf="commandes.length != 0" color="primary"  mat-raised-button type="button">asigné</button>
+            <button *ngIf="commandes.length == 0" commandes color="accent" (click)="undpoAsignateCommande()" mat-button type="button">retour</button>
+            <button *ngIf="commandes.length != 0" commandes disabled="disabled" color="accent" (click)="undpoAsignateCommande()" mat-button type="button">retour</button>
+        </mat-card>
+    </div>
+</div>

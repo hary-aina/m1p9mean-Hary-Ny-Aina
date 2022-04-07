@@ -1,0 +1,47 @@
+<div cdkDropList class="drop-area" *ngIf="commandes as commandes" (cdkDropListDropped)="drop($event)" [cdkDropListData]="commandes" fxLayoutGap="16px grid" >
+    <div style="height:500px" *ngIf="commandes.length == 0">
+        <h1 style="color: black;">Aucune commande a livrée </h1>
+    </div>
+    <div cdkDrag *ngFor="let commande of commandes" >
+        <mat-card class="card-content">
+            <table  class="content-table" >
+                <tbody>
+                    <tr>
+                        <td>
+                            <b>Commande du {{commande.date_comande}}</b>
+                        </td>
+                        <td>
+                            Restaurant : <b>{{commande.restaurant_name}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            nom client : <b>{{commande.client_name}}</b>
+                        </td>
+                        <td>
+                            contact Client : <b>{{commande.client_contact}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            address de livraison : <b>{{commande.lieu_adresse_livraison}}</b>
+                        </td>
+                        <td>
+                            Total : <b>{{commande.prix_global}}</b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <b style="text-align: center;">Detail de la livraison</b>
+            <table class="content-table-detail">
+                <tbody>
+                    <tr *ngFor="let plat of commande.detail_commande">
+                        <td>{{plat.plat_name}}</td>
+                        <td>Pu : {{plat.plat_prix}} Ar</td>
+                        <td>{{plat.nombre}}</td>
+                    </tr>    
+                </tbody>
+            </table>
+        </mat-card>
+    </div>
+</div>

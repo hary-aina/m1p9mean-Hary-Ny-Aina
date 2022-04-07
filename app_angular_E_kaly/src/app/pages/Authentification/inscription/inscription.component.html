@@ -23,7 +23,7 @@
             </mat-form-field>
             <p style="color: red;">{{error.contact}}</p>
 
-            <button (click)="continue()" color="primary" mat-button type="button" >Continue</button>
+            <button (click)="continue()" style="background-color:#4f992d; color: white;" mat-button type="button" >Continue</button>
         </form>
         <form  *ngIf="confirmation == 1" fxLayoutAlign="stretch" fxLayout="column">
             <h1 style="text-align: center;">Code de confirmation</h1>
@@ -32,12 +32,12 @@
                 <input matInput placeholder="code" name="code" [(ngModel)]="code">
             </mat-form-field>
             <p style="color: red;">{{error.code}}</p>
-            <button (click)="inscription()" color="primary" mat-button type="button" >S'inscrir</button>
+            <button (click)="inscription()" style="background-color:#4f992d; color: white;" mat-button type="button" >S'inscrire</button>
         </form>
         <form  *ngIf="confirmation == 2" fxLayoutAlign="stretch" fxLayout="column">
             <h1 style="text-align: center;">Félicitation</h1>
             <p>Votre inscription a été effectuer avec success.<br/> Connecter vous avec l'interfacce login</p>
-            <button routerLink="/login" color="primary" mat-button type="button" >Login</button>
+            <button routerLink="/login" style="background-color:#4f992d; color: white;" mat-button type="button" >Login</button>
         </form>        
     </mat-card>  
 </div>

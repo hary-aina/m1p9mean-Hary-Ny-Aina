@@ -19,7 +19,8 @@
                 <input matInput placeholder="password" type="password"  name="password" [(ngModel)]="password">
             </mat-form-field>
             <p style="color: red;">{{error.pwd}}</p>
-            <button color="primary" mat-button type="button" (click)="login()">Login</button>
+            <button style="background-color:#4f992d; color: white;" mat-raised-button type="button" (click)="login()">Login</button>
+            <button style="color: black;" mat-button type="button" routerLink="/inscription" >Rejoindre le groupe</button>
         </form>        
     </mat-card>  
 </div>

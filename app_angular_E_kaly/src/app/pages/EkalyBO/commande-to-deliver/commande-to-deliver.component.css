@@ -1,0 +1,33 @@
+.content{
+    padding: 16px;
+    width: 79%;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.card-content{
+    display: flex;
+    justify-content: right ;
+    flex-direction: column;
+    border-top: 2px solid black;
+}
+.content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 100px;
+}
+.content-table-detail {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 100px;
+}
+.content-table th,
+.content-table td {
+    padding: 5px 15px;
+    text-align: center;
+}
+.drop-area{
+    border: #ccc dashed 2px;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    margin-top: 15px;
+}
