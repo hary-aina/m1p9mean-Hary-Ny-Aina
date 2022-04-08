@@ -46,7 +46,7 @@ export class LivreurComponent implements OnInit {
     let result = this.ekalyService.getLivreurWithNbCommandeToDelivery(this.token, this.per_page, this.page_number);
     result.subscribe((data:any) => {
       if(data.status != 200){
-        alert("erreur lors du cosulation du serveur");
+        alert(data.data);
       }else{
         //use cookie there
         this.livreurs = data.data;
@@ -80,7 +80,7 @@ export class LivreurComponent implements OnInit {
     let result = this.ekalyService.asignLivraison(this.token, this.commandes, this.livreurSelected._id, this.livreurSelected.name);
     result.subscribe((data:any) => {
       if(data.status != 200){
-        alert("erreur lors du cosulation du serveur");
+        alert(data.data);
       }else{
         //use cookie there
         this.livreurSelected.nombre_commande += this.commandes.length;

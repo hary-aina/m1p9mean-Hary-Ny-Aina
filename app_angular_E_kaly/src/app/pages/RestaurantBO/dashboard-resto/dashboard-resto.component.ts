@@ -99,7 +99,7 @@ export class DashboardRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("erreur lors de la consultation du serveur");
+        alert(data.data);
       }else{
         //use cookie there
         this.chiffre = data.data[0];
@@ -116,7 +116,7 @@ export class DashboardRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("erreur lors de la consultation du serveur");
+        alert(data.data);
       }else{
         console.log(data.data);
         data.data.forEach((res:any) => {

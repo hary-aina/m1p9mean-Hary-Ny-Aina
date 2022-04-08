@@ -54,7 +54,7 @@ export class HomeRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         plat.etat = 10;
@@ -72,7 +72,7 @@ export class HomeRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         plat.etat = -10;
@@ -86,6 +86,7 @@ export class HomeRestoComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -100,6 +101,7 @@ export class HomeRestoComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -114,6 +116,7 @@ export class HomeRestoComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;

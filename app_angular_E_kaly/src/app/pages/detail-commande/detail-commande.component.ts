@@ -122,7 +122,7 @@ export class DetailCommandeComponent implements OnInit {
     let result = this.clientService.getPlatByRestaurant(resto_id, this.per_page, this.page_number);
       result.subscribe((data:any) => {
         if(data.status != 200){
-          //this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.PlatResto = data.data;
@@ -203,7 +203,7 @@ export class DetailCommandeComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de l'ajout de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         //console.log(data);
@@ -226,7 +226,7 @@ export class DetailCommandeComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         //console.log(data);

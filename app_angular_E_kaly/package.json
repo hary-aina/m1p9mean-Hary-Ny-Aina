@@ -1,10 +1,14 @@
 {
   "name": "angular-e-kaly",
   "version": "0.0.0",
+  "engines": { 
+    "node": "16.14.0", 
+    "npm": "8.3.1" 
+  },
   "scripts": {
     "ng": "ng",
-    "start": "node --max_old_space_size=8192 ng serve",
-    "build": "node --max_old_space_size=8192 ng build",
+    "start": "node server.js",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -26,9 +30,11 @@
     "chart.js": "^3.7.1",
     "chartjs-plugin-datalabels": "^2.0.0",
     "experimental": "^0.0.3",
+    "express": "^4.17.3",
     "lodash": "^4.17.21",
     "ng2-charts": "^3.0.8",
     "ngx-cookie-service": "^13.1.2",
+    "path": "^0.12.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

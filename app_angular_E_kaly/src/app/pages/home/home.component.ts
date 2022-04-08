@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -54,6 +55,7 @@ export class HomeComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -69,6 +71,7 @@ export class HomeComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -81,6 +84,7 @@ export class HomeComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -97,6 +101,7 @@ export class HomeComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;
@@ -109,6 +114,7 @@ export class HomeComponent implements OnInit {
       result.subscribe((data:any) => {
         if(data.status != 200){
           this.error = "erreur lors du cosulation du serveur";
+          alert(data.data);
         }else{
           //use cookie there
           this.plats = data.data;

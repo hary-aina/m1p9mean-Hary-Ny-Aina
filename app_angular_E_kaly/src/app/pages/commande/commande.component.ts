@@ -49,7 +49,7 @@ export class CommandeComponent implements OnInit {
     let result = this.clientService.getCommande(this.token, this.Client_id, this.per_page, this.page_number);
       result.subscribe((data:any) => {
         if(data.status != 200){
-          alert("erreur lors du cosulation du serveur");
+          alert(data.data);
         }else{
           //use cookie there
           this.MesCommandes = data.data;
@@ -73,7 +73,7 @@ export class CommandeComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         //console.log(data);
@@ -89,7 +89,7 @@ export class CommandeComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         this.MesCommandes = this.MesCommandes.filter((item: any) => item != macommande);

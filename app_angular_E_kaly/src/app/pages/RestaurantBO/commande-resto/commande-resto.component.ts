@@ -58,7 +58,7 @@ export class CommandeRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         this.MesCommandes = data.data;
@@ -73,7 +73,7 @@ export class CommandeRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         commande.etat = 15;
@@ -88,7 +88,7 @@ export class CommandeRestoComponent implements OnInit {
     result.subscribe((data:any) => {
       //console.log(data);
       if(data.status != 200){
-        alert("lors de la mise a jour de la commande");
+        alert(data.data);
       }else{
         //use cookie there
         commande.etat = 20;

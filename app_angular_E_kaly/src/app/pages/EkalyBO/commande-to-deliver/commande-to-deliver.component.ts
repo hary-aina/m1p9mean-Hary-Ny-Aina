@@ -42,7 +42,7 @@ export class CommandeToDeliverComponent implements OnInit {
     let result = this.ekalyService.getCommandeToDeliver(this.token, this.per_page, this.page_number);
     result.subscribe((data:any) => {
       if(data.status != 200){
-        alert("erreur lors du cosulation du serveur");
+        alert(data.data);
       }else{
         //use cookie there
         this.commandes = data.data;

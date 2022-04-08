@@ -51,7 +51,7 @@ export class DashboardEkalyComponent implements OnInit {
     let result = this.ekalyService.getdashboard(this.token);
     result.subscribe((data:any) => {
       if(data.status != 200){
-        alert("erreur lors du cosulation du serveur");
+        alert(data.data);
       }else{
         //use cookie there;
         //console.log(data.data);
