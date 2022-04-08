@@ -42,7 +42,7 @@ module.exports = class CommadeModel{
             .skip(skips).limit(limit).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
-                    reject(error);
+                    reject(err);
 					return;
                 } else {
                     resolve({
@@ -68,7 +68,7 @@ module.exports = class CommadeModel{
             .skip(skips).limit(limit).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
-                    reject(error);
+                    reject(err);
 					return;
                 } else {
                     resolve({
@@ -94,7 +94,7 @@ module.exports = class CommadeModel{
             .skip(skips).limit(limit).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
-                    reject(error);
+                    reject(err);
 					return;
                 } else {
                     resolve({
@@ -112,7 +112,7 @@ module.exports = class CommadeModel{
                 { _id: new ObjectId(commande_id) },
                 {
                     $set: {
-                        etat: etat
+                        etat: parseInt(etat)
                     }
                 },
                 {
@@ -133,13 +133,16 @@ module.exports = class CommadeModel{
     }
 
     //modifier ma commande
-    static modifierCommande(db, commande_id, prix_global, detail_commande, lieu_adresse_livraison, client_contact){
+    static modifierCommande(db, commande_id, prix_global, revient_global, detail_commande, lieu_adresse_livraison, client_contact){
         return new Promise((resolve, reject)=> {
+            detail_commande.plat_prix = parseFloat(detail_commande.plat_prix);
+            detail_commande.plat_revient = parseFloat(detail_commande.plat_revient);
             db.collection("commande").findOneAndUpdate(
                 { _id: new ObjectId(commande_id) },
                 {
                     $set: {
-                        prix_global : prix_global, 
+                        prix_global : parseFloat(prix_global),
+                        revient_global : parseFloat(revient_global),
                         detail_commande : detail_commande, 
                         lieu_adresse_livraison : lieu_adresse_livraison, 
                         client_contact : client_contact
@@ -165,17 +168,20 @@ module.exports = class CommadeModel{
     }
 
     //faire une commande
-    static makeCommande(db, restaurant_id, restaurant_name, prix_global, client_id, client_name, client_contact , date_comande, lieu_adresse_livraison, detail_commande = []){
+    static makeCommande(db, restaurant_id, restaurant_name, prix_global, revient_global, client_id, client_name, client_contact , date_comande, lieu_adresse_livraison, detail_commande = []){
         return new Promise((resolve, reject)=> {
+            detail_commande.plat_prix = parseFloat(detail_commande.plat_prix);
+            detail_commande.plat_revient = parseFloat(detail_commande.plat_revient);
             db.collection("commande").insertOne(
                 {
                     restaurant_id: restaurant_id,
                     restaurant_name: restaurant_name,
-                    prix_global: prix_global,
+                    prix_global: parseFloat(prix_global),
+                    revient_global: parseFloat(revient_global),
                     client_id: client_id,
                     client_name: client_name,
                     client_contact: client_contact,
-                    date_comande: date_comande,
+                    date_comande: new Date(date_comande),
                     lieu_adresse_livraison: lieu_adresse_livraison,
                     livreur_id: "",
                     livreur_name: "",
@@ -231,6 +237,75 @@ module.exports = class CommadeModel{
                     return;
                 });
             }
+        });
+    }
+
+    //get board by restaurant
+    static getBoardResto(db, resto_id){
+        return new Promise((resolve, reject)=> {
+            db.collection("commande").aggregate(
+                [
+                    { 
+                        $match : {
+                            restaurant_id : resto_id,
+                            etat : 30
+                        }
+                    },
+                    {
+                        $group: {
+                            _id : resto_id,
+                            chiffre_affaire : { $sum : "$prix_global"},
+                            cout : { $sum : "$revient_global" },
+                            benefice : { $sum : { $subtract : ["$prix_global", "$revient_global"]}}
+                        }
+                    }
+                ]
+            ).toArray(function (err, result) {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+					return;
+                } else {
+                    resolve({
+                        "status": 200,
+                        "data": result
+                    });
+                }
+            });
+        });
+    }
+
+    static getBoardRestoByDay(db, resto_id){
+        return new Promise((resolve, reject)=> {
+            db.collection("commande").aggregate(
+                [
+                    { 
+                        $match : {
+                            restaurant_id : resto_id,
+                            etat : 30
+                        }
+                    },
+                    {
+                        $group: {
+                            _id : {day: { $dayOfMonth: "$date_comande"}, month: { $month : "$date_comande" }, year: { $year: "$date_comande" }},
+                            chiffre_affaire : { $sum : "$prix_global"},
+                            cout : { $sum : "$revient_global" },
+                            benefice : { $sum : { $subtract : ["$prix_global", "$revient_global"]}}
+                        }
+                    }
+                ]
+            ).toArray(function (err, result) {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+					return;
+                } else {
+                    resolve({
+                        "status": 200,
+                        "data": result
+                    });
+                }
+            });
         });
     }
     

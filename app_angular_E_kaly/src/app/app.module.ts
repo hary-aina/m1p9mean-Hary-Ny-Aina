@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgChartsModule } from 'ng2-charts';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -39,12 +40,11 @@ import { NavbarLivreurComponent } from './pages/LivreurBO/navbar-livreur/navbar-
 import { HomeLivreurComponent } from './pages/LivreurBO/home-livreur/home-livreur.component';
 import { LoaderComponent } from './pages/loader/loader.component';
 
-//import {  NgxLoadingSpinnerModule } from 'ngx-loading-spinner';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
 import { CommandeToDeliverComponent } from './pages/EkalyBO/commande-to-deliver/commande-to-deliver.component';
 import { LivreurComponent } from './pages/EkalyBO/livreur/livreur.component';
+import { DashboardRestoComponent } from './pages/RestaurantBO/dashboard-resto/dashboard-resto.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +68,7 @@ import { LivreurComponent } from './pages/EkalyBO/livreur/livreur.component';
     LoaderComponent,
     CommandeToDeliverComponent,
     LivreurComponent,
+    DashboardRestoComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,8 +85,8 @@ import { LivreurComponent } from './pages/EkalyBO/livreur/livreur.component';
     MatIconModule,
     MatListModule,
     DragDropModule,
-    MatProgressSpinnerModule
-    //NgxLoadingSpinnerModule,
+    MatProgressSpinnerModule,
+    NgChartsModule
   ],
   providers: [
     {

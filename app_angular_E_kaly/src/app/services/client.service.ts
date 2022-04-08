@@ -21,10 +21,11 @@ export class ClientService {
     return this.http.get(`${baseUrl}/client/plat/searchPlat/${searchPlat}/${per_page}/${page_number}`);
   }
 
-  updateOrdre(token:string, commande_id:string, prix_global:string, detail_commande:any, lieu_adresse_livraison:string, client_contact:string){
+  updateOrdre(token:string, commande_id:string, prix_global:string, revient_global:string, detail_commande:any, lieu_adresse_livraison:string, client_contact:string){
     let postData = {
       "token":token,
       "prix_global":prix_global, 
+      "revient_global":revient_global, 
       "detail_commande":detail_commande, 
       "lieu_adresse_livraison":lieu_adresse_livraison, 
       "client_contact":client_contact 
@@ -37,12 +38,13 @@ export class ClientService {
     })
   }
 
-  makeOrdre(token:string, restaurant_id:string, restaurant_name:string, prix_global:number, client_id:string, client_name:string, client_contact:string, date_comande:string, lieu_adresse_livraison:string, detail_commande:any){
+  makeOrdre(token:string, restaurant_id:string, restaurant_name:string, prix_global:number, revient_global:string, client_id:string, client_name:string, client_contact:string, date_comande:string, lieu_adresse_livraison:string, detail_commande:any){
       let postData = {
         "token":token,
         "restaurant_id": restaurant_id,
         "restaurant_name": restaurant_name,
         "prix_global": prix_global, 
+        "revient_global": revient_global, 
         "client_id": client_id, 
         "client_name": client_name, 
         "client_contact": client_contact, 

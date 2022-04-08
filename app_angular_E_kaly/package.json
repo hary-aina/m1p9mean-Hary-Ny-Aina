@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node --max_old_space_size=8192 ng serve",
+    "build": "node --max_old_space_size=8192 ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -12,7 +12,6 @@
   "dependencies": {
     "@angular/animations": "~13.3.0",
     "@angular/cdk": "^13.3.2",
-    "@angular/cdk-experimental": "^14.0.0-next.9",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
@@ -24,11 +23,11 @@
     "@angular/router": "~13.3.0",
     "@types/lodash": "^4.14.181",
     "cdk": "^2.19.0",
+    "chart.js": "^3.7.1",
     "experimental": "^0.0.3",
     "lodash": "^4.17.21",
+    "ng2-charts": "^3.0.8",
     "ngx-cookie-service": "^13.1.2",
-    "ngx-loading-spinner": "^13.0.2",
-    "ngx-spinner": "^13.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

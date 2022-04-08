@@ -1,0 +1,12 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.content > mat-card{
+    background-color: rgba(0, 0, 0, 0.747);
+    min-height: 200px;
+    color: white;
+}
