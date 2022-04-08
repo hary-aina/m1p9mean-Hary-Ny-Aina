@@ -15,7 +15,7 @@
                     <br>
                     <p>Contact du client : <b>{{CommandeObject.client_contact}}</b></p>
                     <br>
-                    <p>Lieu ou adress de livraison : <b>{{CommandeObject.lieu_adresse_livraison}}</b></p>
+                    <p>Lieu ou adress de livraison : <b><input type="text" [(ngModel)]="CommandeObject.lieu_adresse_livraison"></b></p>
                     <br>
                     <p>Total : <b>{{CommandeObject.prix_global}}</b></p>
                 </div>
