@@ -11,6 +11,7 @@ import { CommandeRestoComponent } from "./pages/RestaurantBO/commande-resto/comm
 import { DashboardRestoComponent } from "./pages/RestaurantBO/dashboard-resto/dashboard-resto.component";
 import { LoginEkalyComponent } from "./pages/EkalyBO/login-ekaly/login-ekaly.component";
 import { HomeEkalyComponent } from "./pages/EkalyBO/home-ekaly/home-ekaly.component";
+import { DashboardEkalyComponent } from "./pages/EkalyBO/dashboard-ekaly/dashboard-ekaly.component";
 import { LoginLivreurComponent } from "./pages/LivreurBO/login-livreur/login-livreur.component";
 import { HomeLivreurComponent } from "./pages/LivreurBO/home-livreur/home-livreur.component";
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'resto-bo/dashboard', component: DashboardRestoComponent },
   { path: 'ekaly-bo/login', component: LoginEkalyComponent },
   { path: 'ekaly-bo/home', component: HomeEkalyComponent },
+  { path: 'ekaly-bo/dashboard', component: DashboardEkalyComponent },
   { path: 'livreur-bo/login', component: LoginLivreurComponent },
   { path: 'livreur-bo/home', component: HomeLivreurComponent },
 ];

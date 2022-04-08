@@ -23,13 +23,18 @@ export class EkalyService {
       "commande_array" : commande_array,
       "livreur_id" : livreur_id, 
       "livreur_name" : livreur_name
+    }
+    return this.http.post(`${baseUrl}/responsable_E_kaly/commande/asignLivraison`, postData, {
+        headers: new HttpHeaders({
+            "Accept": 'application/json',
+            'Content-Type': 'application/json'
+        })
+    })
   }
-  return this.http.post(`${baseUrl}/responsable_E_kaly/commande/asignLivraison`, postData, {
-      headers: new HttpHeaders({
-          "Accept": 'application/json',
-          'Content-Type': 'application/json'
-      })
-  })
+
+  //dashboard
+  getdashboard(token:string){
+    return this.http.get(`${baseUrl}/responsable_E_kaly/commande/dashboard?token=${token}`);
   }
 
 }

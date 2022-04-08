@@ -24,6 +24,7 @@
     "@types/lodash": "^4.14.181",
     "cdk": "^2.19.0",
     "chart.js": "^3.7.1",
+    "chartjs-plugin-datalabels": "^2.0.0",
     "experimental": "^0.0.3",
     "lodash": "^4.17.21",
     "ng2-charts": "^3.0.8",
