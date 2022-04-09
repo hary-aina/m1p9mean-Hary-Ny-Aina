@@ -22,7 +22,7 @@ export class CommandeRestoComponent implements OnInit {
   restaurant_id : string;
   token : string;
 
-  per_page = 10;
+  per_page = 20;
   page_number = 1;
 
   constructor(

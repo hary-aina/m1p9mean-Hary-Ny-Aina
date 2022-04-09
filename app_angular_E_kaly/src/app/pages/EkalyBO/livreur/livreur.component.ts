@@ -17,7 +17,7 @@ export class LivreurComponent implements OnInit {
   token : string;
   type_user_name : string;
 
-  per_page = 10;
+  per_page = 20;
   page_number = 1;
 
   showDropInput = 0;

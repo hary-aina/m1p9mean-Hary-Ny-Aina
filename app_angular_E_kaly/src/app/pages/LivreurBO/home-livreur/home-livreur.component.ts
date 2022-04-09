@@ -18,7 +18,7 @@ export class HomeLivreurComponent implements OnInit {
   type_user_name : string;
   token : string;
 
-  per_page = 10;
+  per_page = 20;
   page_number = 1;
 
   constructor(

@@ -20,7 +20,7 @@ export class CommandeComponent implements OnInit {
   type_user_name : string;
 
   //pagination du menu
-  per_page = 10;
+  per_page = 20;
   page_number = 1;
 
   constructor(

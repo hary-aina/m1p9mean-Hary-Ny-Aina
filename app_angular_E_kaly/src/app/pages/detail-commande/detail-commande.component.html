@@ -15,7 +15,7 @@
                     <br>
                     <p>Contact du client : <b>{{CommandeObject.client_contact}}</b></p>
                     <br>
-                    <p>Lieu ou adress de livraison : <b><input type="text" [(ngModel)]="CommandeObject.lieu_adresse_livraison"></b></p>
+                    <p>Lieu ou adress de livraison : <b><input required="required" type="text" [(ngModel)]="CommandeObject.lieu_adresse_livraison"></b></p>
                     <br>
                     <p>Total : <b>{{CommandeObject.prix_global}}</b></p>
                 </div>
@@ -48,14 +48,14 @@
                 <div class="content">
                     <div fxLayout="row wrap" fxLayoutGap="16px grid">
                         <div style="height:500px" *ngIf="PlatResto.length == 0">
-                            <h1 style="color: white;">Aucun resulat !</h1>
+                            <h1 style="color: white;">Aucun resultat !</h1>
                         </div>
                         <div fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let plat of PlatResto">
                             <mat-card class="card">
                                 <mat-card-header>
                                     <mat-card-title>{{plat.name}}</mat-card-title>
                                 </mat-card-header>
-                                <img mat-card-image src="./../../../assets/image/login.gif">
+                                <img mat-card-image src="./../../../assets/image/plat.jpg">
                                 <mat-card-content>
                                     <p>{{plat.description}}</p>
                                     <p><span>Restaurant : </span>{{plat.restaurant_name}}</p>
