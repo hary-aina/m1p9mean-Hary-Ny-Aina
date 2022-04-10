@@ -83,9 +83,8 @@ export class DetailCommandeComponent implements OnInit {
         this.getPlatResto(this.extraPlat.restaurant_id);
 
       }
-
       //modification commande
-      if(this.action == 'update'){
+      else if(this.action == 'update'){
         this.extraCommande = history.state.commande;
         //console.log(this.extraCommande);
 
@@ -112,6 +111,9 @@ export class DetailCommandeComponent implements OnInit {
         this.getPlatResto(this.extraCommande.restaurant_id);
 
       }
+      else{
+        this.router.navigate(['/commande'])
+      }
 
     }
   }
@@ -129,6 +131,18 @@ export class DetailCommandeComponent implements OnInit {
           //console.log(this.PlatResto, "tay");
         }
       });
+  }
+
+  //avoir plat du resto next
+  getPlatNext(){
+    this.page_number ++;
+    this.getPlatResto(this.CommandeObject.restaurant_id);
+  }
+
+  //avoir plat du resto previous
+  getPlatPrevious(){
+    this.page_number --;
+    this.getPlatResto(this.CommandeObject.restaurant_id);
   }
 
   //|--------------------|
