@@ -125,6 +125,7 @@ export class DashboardRestoComponent implements OnInit {
           this.ChiffrebyDay[1].data.push(res.cout);
           this.ChiffrebyDay[2].data.push(res.benefice);
         });
+        this.chart?.update();
       }
     });
   }

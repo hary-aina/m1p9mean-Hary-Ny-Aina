@@ -61,6 +61,7 @@ export class DashboardEkalyComponent implements OnInit {
           this.boardDataset[1].data.push(boardResult.cout);
           this.boardDataset[2].data.push(boardResult.benefice);
         });
+        this.chart?.update();
       }
     });
   }
