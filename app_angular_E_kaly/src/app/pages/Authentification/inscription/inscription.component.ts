@@ -76,8 +76,12 @@ export class InscriptionComponent implements OnInit {
       result.subscribe((data:any) => {
         //console.log(data);
         if(data.status != 200){
-          this.error.error = "erreur lors du traitement serveur";
-          this.error.code = data.data;
+          if(data.status == 500){
+            this.error.error = "L'email est déja utilisé. Impossible de faire l'inscription";
+          }else{
+            this.error.error = "erreur lors du traitement serveur";
+            this.error.code = data.data;
+          }
         }else{
           this.confirmation = 2;
         }
