@@ -11,7 +11,7 @@
                 <mat-card class="card-content" fxLayout="row">
                     <span><b>Commande du {{commande.date_comande}}</b></span>
                     <span>Restaurant : <b>{{commande.restaurant_name}}</b></span>
-                    <span>Total : <b>{{commande.prix_global}}</b></span>
+                    <span>Total : <b>{{commande.prix_global}} Ar</b></span>
                     <div class="card-content" >
                         <nav *ngIf="commande.etat == 0">
                             <a mat-button (click)="annulerOrder(commande)" title="annuler la commande"><mat-icon style="color: red;">remove_circle_outline</mat-icon></a>

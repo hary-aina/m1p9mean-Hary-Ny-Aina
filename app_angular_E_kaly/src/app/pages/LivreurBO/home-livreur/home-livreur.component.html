@@ -15,7 +15,7 @@
                             <tr>
                                 <td>{{commande.date_comande}}</td> 
                                 <td><b>Restaurant : </b>{{commande.restaurant_name}}</td>
-                                <td><b>Total : </b>{{commande.prix_global}}</td>
+                                <td><b>Total : </b>{{commande.prix_global}} Ar</td>
                                 <td><b>Contact : </b>{{commande.client_contact}}</td>
                                 <td><b>lieu de livraison : </b>{{commande.lieu_adresse_livraison}}</td>
                                 <td>
@@ -70,7 +70,7 @@
                         <tbody>
                             <tr *ngFor="let detail of commande.detail_commande" >
                                 <td>{{detail.plat_name}}</td> 
-                                <td>{{detail.plat_prix}}</td>
+                                <td>{{detail.plat_prix}} Ar</td>
                                 <td>{{detail.nombre}}</td>
                             </tr>
                         </tbody>

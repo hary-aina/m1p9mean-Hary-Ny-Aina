@@ -17,7 +17,7 @@
                     <br>
                     <p>Lieu ou adress de livraison : <b><input required="required" type="text" [(ngModel)]="CommandeObject.lieu_adresse_livraison"></b></p>
                     <br>
-                    <p>Total : <b>{{CommandeObject.prix_global}}</b></p>
+                    <p>Total : <b>{{CommandeObject.prix_global}} Ar</b></p>
                 </div>
             </mat-card>
             <br>
@@ -27,7 +27,7 @@
             <div *ngFor="let plat of CommandeObject.detail_commande">
                 <mat-card class="card-content" fxLayout="row">
                     <span>{{plat.plat_name}}</span>
-                    <span>prix unitaire : {{plat.plat_prix}}</span>
+                    <span>prix unitaire : {{plat.plat_prix}} Ar</span>
                     <span>nombre : {{plat.nombre}}</span>
                     <div *ngIf="CommandeObject.etat == 0" class="card-content" >
                         <a mat-button (click)="minusPlatNumber(plat)" title="diminuer"><mat-icon>remove</mat-icon></a>
@@ -70,9 +70,9 @@
                     </div>
                 </div>
                 <mat-toolbar>
-                    <button (click)="getPlatPrevious()" mat-button style="color:#4f992d;"><mat-icon style="color:#4f992d;">arrow_back</mat-icon>Precedant</button>
+                    <button *ngIf="page_number != 1" (click)="getPlatPrevious()" mat-button style="color:#4f992d;"><mat-icon style="color:#4f992d;">arrow_back</mat-icon>Precedant</button>
                     <div style="flex:1 1 auto;"></div>
-                    <button (click)="getPlatNext()" mat-button style="color:#4f992d;">Suivant<mat-icon style="color:#4f992d;">arrow_forward</mat-icon></button>
+                    <button  *ngIf="PlatResto.length != 0" (click)="getPlatNext()" mat-button style="color:#4f992d;">Suivant<mat-icon style="color:#4f992d;">arrow_forward</mat-icon></button>
                 </mat-toolbar>
             </div>
 

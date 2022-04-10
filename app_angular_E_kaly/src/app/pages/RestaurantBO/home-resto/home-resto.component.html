@@ -12,7 +12,7 @@
                     <mat-card-header>
                         <mat-card-title>{{plat.name}}</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="./../../../assets/image/login.gif">
+                    <img mat-card-image src="./../../../assets/image/plat.jpg">
                     <mat-card-content>
                         <p>{{plat.description}}</p>
                         <p><span>Restaurant : </span>{{plat.restaurant_name}}</p>
@@ -29,9 +29,9 @@
         </div>
     </div>
     <mat-toolbar>
-        <button  mat-button style="color:#4f992d;"><mat-icon style="color:#4f992d;">arrow_back</mat-icon>Precedant</button>
+        <button *ngIf="page_number != 1" (click)="previous()" mat-button style="color:#4f992d;"><mat-icon style="color:#4f992d;">arrow_back</mat-icon>Precedant</button>
         <div style="flex:1 1 auto;"></div>
-        <button  mat-button style="color:#4f992d;">Suivant<mat-icon style="color:#4f992d;">arrow_forward</mat-icon></button>
+        <button *ngIf="plats.length != 0" (click)="next()" mat-button style="color:#4f992d;">Suivant<mat-icon style="color:#4f992d;">arrow_forward</mat-icon></button>
     </mat-toolbar>
 </div>
 
