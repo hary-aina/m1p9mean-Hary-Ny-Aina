@@ -67,6 +67,7 @@ export class InscriptionComponent implements OnInit {
 
   inscription(){
     this.error.code = "";
+    this.error.error = "";
     if (this.code == '') {
       this.error.code = (this.code == '') ? 'Ce champ est obligatoire' : '';
     } 
