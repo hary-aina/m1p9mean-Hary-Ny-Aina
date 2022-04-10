@@ -25,7 +25,7 @@ export class DetailCommandeComponent implements OnInit {
   type_user_name : string;
 
   //pagination du menu
-  per_page = 20;
+  per_page = 9;
   page_number = 1;
 
   constructor(

@@ -10,7 +10,7 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class HomeComponent implements OnInit {
 
-  per_page = 20;
+  per_page = 9;
   page_number = 1;
   plats : any = [];
 
