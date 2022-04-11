@@ -46,6 +46,7 @@ import { CommandeToDeliverComponent } from './pages/EkalyBO/commande-to-deliver/
 import { LivreurComponent } from './pages/EkalyBO/livreur/livreur.component';
 import { DashboardRestoComponent } from './pages/RestaurantBO/dashboard-resto/dashboard-resto.component';
 import { DashboardEkalyComponent } from './pages/EkalyBO/dashboard-ekaly/dashboard-ekaly.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { DashboardEkalyComponent } from './pages/EkalyBO/dashboard-ekaly/dashboa
     LivreurComponent,
     DashboardRestoComponent,
     DashboardEkalyComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
